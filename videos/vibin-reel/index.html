@@ -80,10 +80,28 @@
 
       <!-- S1: mini lockup -->
       <div class="sc" id="S1">
-        <div class="col" style="left: 0; background: var(--ink2)"></div>
-        <div class="col" style="left: 360px; background: var(--terra)"></div>
-        <div class="col" style="left: 720px; background: var(--ink2)"></div>
-        <div class="stack serif" style="top: 640px"><span class="l">Motion</span><span class="l">Graphics</span><span class="l sm it">that bring ideas</span><span class="l">to life</span></div>
+        <div class="col" style="left: 0; background: radial-gradient(420px 520px at 30% 88%, rgba(120, 82, 52, 0.3), transparent 70%), var(--ink2)"></div>
+        <div class="col" id="s1col" style="left: 360px; background: var(--terra)"></div>
+        <div class="col" style="left: 720px; background: radial-gradient(420px 520px at 70% 12%, rgba(120, 82, 52, 0.25), transparent 70%), var(--ink2)"></div>
+        <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position: absolute; left: 0; top: 0" data-layout-ignore>
+          <g fill="none" stroke="rgba(248,236,219,0.10)" stroke-width="2">
+            <circle cx="-160" cy="980" r="300" /><circle cx="-160" cy="980" r="420" /><circle cx="-160" cy="980" r="540" />
+            <circle cx="1240" cy="1100" r="300" /><circle cx="1240" cy="1100" r="420" /><circle cx="1240" cy="1100" r="540" />
+          </g>
+          <g class="s1x" stroke="rgba(248,236,219,0.5)" stroke-width="2" fill="none">
+            <path d="M300 470v24M288 482h24" /><path d="M90 700v24M78 712h24" /><path d="M800 340v24M788 352h24" /><path d="M990 760v24M978 772h24" />
+            <circle cx="170" cy="1250" r="70" stroke-dasharray="6 9" stroke="rgba(248,236,219,0.45)" /><circle cx="930" cy="560" r="70" stroke-dasharray="6 9" stroke="rgba(248,236,219,0.45)" />
+          </g>
+        </svg>
+        <div style="position: absolute; left: 360px; top: 0; width: 360px; height: 1920px; overflow: hidden" data-layout-allow-overflow>
+          <div class="s1e" style="position: absolute; left: 60px; top: 1010px; width: 110px; height: 380px; border-radius: 50%; background: rgba(78, 34, 24, 0.6)"></div>
+          <div class="s1e" style="position: absolute; left: 125px; top: 1010px; width: 110px; height: 380px; border-radius: 50%; background: rgba(78, 34, 24, 0.75)"></div>
+          <div class="s1e" style="position: absolute; left: 190px; top: 1010px; width: 110px; height: 380px; border-radius: 50%; background: rgba(78, 34, 24, 0.9)"></div>
+        </div>
+        <div class="ring" id="p1" style="top: 380px"></div><div class="ring" id="p2" style="top: 380px"></div><div class="ring" id="p3" style="top: 380px"></div>
+        <div id="disc1" style="position: absolute; left: 390px; top: 380px; width: 300px; height: 300px; border-radius: 50%; background: var(--ink)"><div style="position: absolute; left: 118px; top: 88px; width: 0; height: 0; border-top: 62px solid transparent; border-bottom: 62px solid transparent; border-left: 102px solid var(--cream)"></div></div>
+        <div class="stack serif" id="s1stack" style="top: 760px" data-layout-allow-overlap><span class="l">Motion</span><span class="l">Graphics</span><span class="l sm it">that bring ideas</span><span class="l">to life</span></div>
+        <div class="center label" id="s1svc" style="top: 1405px; font-size: 22px; line-height: 1.7"><span class="blk">Motion Graphics &amp; Animation</span><span class="blk">Video Editing · Smooth Transitions &amp; VFX</span></div>
       </div>
 
       <!-- S2: play / by Evan -->
@@ -207,7 +225,7 @@
       // cache everything the clock writes to (no DOM queries inside the callback)
       const scenes = $$(".sc");
       const E = {
-        kw: $("#kw"), S5b: $("#S5b"), wpA: $("#wpA"), wpB: $("#wpB"), zd: $("#zd"), S0: $("#S0"), S1: $("#S1"), S2: $("#S2"), S3, S4: $("#S4"), S5: $("#S5"), S6: $("#S6"), S7: $("#S7"), S8: $("#S8"), S9: $("#S9"),
+        kw: $("#kw"), s1col: $("#s1col"), s1stack: $("#s1stack"), disc1: $("#disc1"), p: [$("#p1"), $("#p2"), $("#p3")], s1e: $$(".s1e"), s1x: $$(".s1x > *"), s1svc: $("#s1svc"), S5b: $("#S5b"), wpA: $("#wpA"), wpB: $("#wpB"), zd: $("#zd"), S0: $("#S0"), S1: $("#S1"), S2: $("#S2"), S3, S4: $("#S4"), S5: $("#S5"), S6: $("#S6"), S7: $("#S7"), S8: $("#S8"), S9: $("#S9"),
         disc: $("#disc"), rings: [$("#r1"), $("#r2"), $("#r3")], s2small: $("#s2small"), s2big: $("#s2big"),
         balls: [$("#ba0"), $("#ba1"), $("#ba2")], mon: $("#mon"), monTxt: $("#monTxt"), ph: $("#ph"), flash: $("#flash"),
         s6num: $("#s6num"), s6lab: $("#s6lab"), cards: [$("#c1"), $("#c2"), $("#c3")], wipes: [$("#w0"), $("#w1"), $("#w2"), $("#w3")],
@@ -253,26 +271,41 @@
           E.kw.style.fontStyle = ital ? "italic" : "normal";
           E.kw.style.transform = `scale(${punch(lt, 0.28).toFixed(4)}) rotate(${((i % 2 ? 1 : -1) * 3 * Math.exp(-lt / 0.08)).toFixed(3)}deg)`;
           E.secl.textContent = "INTRO";
-        } else if (i === 7) {                           // the whole line at once
+        } else if (i <= 11) {                           // bar 3: the thumbnail title screen holds and builds, one detail per beat
           show(E.S1);
-          E.S1.style.transform = `scale(${punch(lt, 0.12, 0.1).toFixed(4)})`;
-        } else if (i <= 11) {                           // bar 3: play pressed, BY EVAN (once), packages
-          show(E.S2);
-          const k = i - 8;
-          const pressT = t - TB[8];
-          E.disc.style.transform = `scale(${(pressT < 0.06 ? 0.86 : 1 + 0.1 * Math.exp(-(pressT - 0.06) / 0.08)).toFixed(4)})`;
-          E.rings.forEach((r, j) => {
-            const x = easeOut((pressT - j * 0.06) / 0.5);
-            r.style.transform = `scale(${(1 + 1.1 * x).toFixed(4)})`;
-            r.style.opacity = (pressT - j * 0.06 > 0 ? 1 - x * 0.8 : 0).toFixed(3);
+          const T7 = TB[7];
+          // beat 1: columns + title land
+          E.s1col.style.transform = `scaleY(${easeOut((t - T7 + 0.08) / 0.18).toFixed(4)})`;
+          E.s1col.style.transformOrigin = "50% 0%";
+          E.s1stack.style.transform = `scale(${punch(t - T7, 0.1, 0.1).toFixed(4)})`;
+          // beat 2: the play button drops in and is pressed, rings ripple out (and again on beat 4)
+          const T8 = TB[8];
+          const dropU = clamp01((t - (T8 - 0.22)) / 0.22);
+          const discY = t < T8 ? -700 * (1 - dropU * dropU) : 0;
+          const press = t >= T8 ? 1 - 0.12 * Math.exp(-(t - T8) / 0.06) : 1;
+          E.disc1.style.opacity = t >= T8 - 0.22 ? "1" : "0";
+          E.disc1.style.transform = `translateY(${discY.toFixed(1)}px) scale(${press.toFixed(4)})`;
+          const ripple = t >= TB[10] ? t - TB[10] : t - T8;
+          E.p.forEach((r, j) => {
+            const x = easeOut((ripple - j * 0.07) / 0.7);
+            r.style.left = 390 - j * 90 + "px";
+            r.style.transform = `scale(${(1 + 0.25 * x).toFixed(4)})`;
+            r.style.opacity = (t >= T8 && ripple - j * 0.07 > 0 ? 0.55 * (1 - 0.5 * x) : 0).toFixed(3);
           });
-          const isPk = k === 3;
-          E.s2small.textContent = k === 0 ? "" : isPk ? "15S · 30S · 60S" : "BY";
-          E.s2big.textContent = k === 0 ? " " : isPk ? "PACKAGES" : "EVAN";
-          // EVAN lands once on beat 2 and simply holds through beat 3
-          const since = isPk ? lt : t - TB[9];
-          E.s2big.style.transform = `scale(${punch(since, 0.18).toFixed(4)})`;
-          E.s2big.style.fontSize = isPk ? "96px" : "150px";
+          // beat 3: the three ovals fall in behind "to life"
+          E.s1e.forEach((e, j) => {
+            const land = TB[9] + j * 0.06;
+            const u = clamp01((t - (land - 0.24)) / 0.24);
+            const y = t < land ? -1800 * (1 - u * u) : 0;
+            const sq = t >= land ? Math.exp(-(t - land) / 0.07) : 0;
+            e.style.transform = `translateY(${y.toFixed(1)}px) rotate(-16deg) scale(${(1 + 0.2 * sq).toFixed(4)}, ${(1 - 0.22 * sq).toFixed(4)})`;
+            e.style.transformOrigin = "50% 100%";
+          });
+          // beat 4: crosshairs + dashed circles; beat 5: the services line
+          E.s1x.forEach((el, j) => { el.style.opacity = clamp01((t - TB[10] - 0.025 * j) / 0.1).toFixed(3); });
+          const sv = clamp01((t - TB[11]) / 0.12);
+          E.s1svc.style.opacity = sv.toFixed(3);
+          E.s1svc.style.transform = `translateY(${(20 * (1 - easeOut((t - TB[11]) / 0.2))).toFixed(1)}px)`;
           E.secl.textContent = "BY EVAN";
         } else if (i <= 15) {                           // bar 4: the kick run multiplies "ideas" 1-2-4-8
           show(E.S3);
