@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <!-- beat grid measured from the track (audio/timing.json): 139.6 bpm, first beat 0.184 s -->
+    <script src="assets/js/timing.js"></script>
+    <style>
+      @font-face { font-family: "Playfair Display"; font-weight: 700; font-style: normal; src: url("assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Playfair Display"; font-weight: 700; font-style: italic; src: url("assets/fonts/playfair-display-latin-700-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Jost"; font-weight: 500; font-style: normal; src: url("assets/fonts/jost-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Jost"; font-weight: 600; font-style: normal; src: url("assets/fonts/jost-latin-600-normal.woff2") format("woff2"); }
+      :root { --ink: #0d1b18; --ink2: #13241f; --terra: #a24d38; --cream: #f8ecdb; --line: rgba(248, 236, 219, 0.22); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ink); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--ink); color: var(--cream); font-family: "Jost", sans-serif; }
+      .sc { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+      .serif { font-family: "Playfair Display", serif; font-weight: 700; }
+      .it { font-style: italic; }
+      .label { font-family: "Jost", sans-serif; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; font-size: 26px; }
+      .center { position: absolute; left: 0; width: 1080px; text-align: center; }
+      .blk { display: block; }
+
+      /* S0 kinetic word */
+      #kw { position: absolute; left: 0; top: 760px; width: 1080px; height: 400px; display: flex; align-items: center; justify-content: center; font-size: 250px; line-height: 1; white-space: nowrap; }
+      /* S1 mini lockup + S9 lockup */
+      .col { position: absolute; top: 0; height: 1920px; width: 360px; }
+      .stack { position: absolute; left: 0; width: 1080px; text-align: center; line-height: 1.02; }
+      .stack .l { display: block; font-size: 170px; }
+      .stack .l.sm { font-size: 112px; }
+      /* S2 play */
+      #disc { position: absolute; left: 390px; top: 620px; width: 300px; height: 300px; border-radius: 50%; background: var(--ink); }
+      #tri { position: absolute; left: 118px; top: 88px; width: 0; height: 0; border-top: 62px solid transparent; border-bottom: 62px solid transparent; border-left: 102px solid var(--cream); }
+      .ring { position: absolute; left: 390px; top: 620px; width: 300px; height: 300px; border-radius: 50%; border: 3px solid rgba(248, 236, 219, 0.5); }
+      #s2txt { top: 1040px; }
+      #s2txt .big { display: block; font-size: 150px; letter-spacing: 0.12em; }
+      /* S3 ideas grid */
+      .idea { position: absolute; left: 0; width: 1080px; text-align: center; font-size: 150px; line-height: 1; }
+      /* S4 01 */
+      .head { position: absolute; left: 0; top: 330px; width: 1080px; text-align: center; }
+      .head .num { display: block; font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 120px; line-height: 1; }
+      .head .label { display: block; margin-top: 18px; font-size: 26px; }
+      .ball { position: absolute; top: 980px; width: 190px; height: 460px; border-radius: 50%; background: var(--cream); }
+      #morph { position: absolute; left: 390px; top: 1460px; width: 300px; height: 0; }
+      /* S5 02 */
+      #mon { position: absolute; left: 90px; top: 640px; width: 900px; height: 506px; border: 2px solid var(--line); overflow: hidden; background: var(--ink2); }
+      #monTxt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 150px; }
+      #tracks { position: absolute; left: 90px; top: 1230px; width: 900px; height: 240px; }
+      .track { position: absolute; left: 0; width: 900px; height: 70px; border-top: 1px solid var(--line); }
+      .clipb { position: absolute; top: 10px; height: 48px; border-radius: 8px; }
+      #ph { position: absolute; left: 0; top: -24px; width: 4px; height: 260px; background: var(--cream); }
+      #flash { position: absolute; inset: 0; background: var(--cream); opacity: 0; }
+      /* S6 tiles */
+      .row { position: absolute; left: -600px; height: 130px; white-space: nowrap; }
+      .pill { display: inline-block; margin-right: 24px; padding: 0 36px; height: 112px; line-height: 112px; font-family: "Jost", sans-serif; font-weight: 600; font-size: 50px; letter-spacing: 0.05em; border-radius: 56px; }
+      /* S7 packages */
+      .card { position: absolute; left: 140px; width: 800px; height: 270px; border-radius: 22px; padding: 34px 50px; }
+      .card .dur { position: absolute; left: 50px; top: 40px; font-size: 170px; line-height: 1; }
+      .card .name { position: absolute; left: 400px; top: 82px; font-size: 30px; }
+      .card .sub { position: absolute; left: 400px; top: 138px; font-size: 24px; letter-spacing: 0.04em; text-transform: none; font-weight: 500; }
+      /* S8 CTA wipes */
+      .wipe { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 210px; }
+      /* chrome (inside Reels safe zone) */
+      #chrome { position: absolute; inset: 0; pointer-events: none; }
+      #by { position: absolute; left: 70px; top: 200px; }
+      #by .big { display: block; font-size: 34px; margin-top: 6px; }
+      #tc { position: absolute; left: 640px; top: 200px; width: 370px; text-align: right; font-size: 24px; letter-spacing: 0.2em; font-weight: 500; }
+      #beatc { position: absolute; left: 640px; top: 240px; width: 370px; text-align: right; font-size: 22px; }
+      #prog { position: absolute; left: 70px; top: 1540px; width: 940px; height: 4px; background: var(--line); }
+      #progf { position: absolute; left: 0; top: 0; width: 940px; height: 4px; background: var(--cream); transform-origin: 0% 50%; }
+      #secl { position: absolute; left: 70px; top: 1570px; font-size: 22px; }
+      #pk { position: absolute; left: 610px; top: 1570px; width: 400px; text-align: right; font-size: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="28.6" data-width="1080" data-height="1920">
+      <!-- S0: one word per beat -->
+      <div class="sc" id="S0"><div id="kw" class="serif">Motion</div></div>
+
+      <!-- S1: mini lockup -->
+      <div class="sc" id="S1">
+        <div class="col" style="left: 0; background: var(--ink2)"></div>
+        <div class="col" style="left: 360px; background: var(--terra)"></div>
+        <div class="col" style="left: 720px; background: var(--ink2)"></div>
+        <div class="stack serif" style="top: 640px"><span class="l">Motion</span><span class="l">Graphics</span><span class="l sm it">that bring ideas</span><span class="l">to life</span></div>
+      </div>
+
+      <!-- S2: play / by Evan -->
+      <div class="sc" id="S2" style="background: var(--terra)">
+        <div class="ring" id="r1"></div><div class="ring" id="r2"></div><div class="ring" id="r3"></div>
+        <div id="disc"><div id="tri"></div></div>
+        <div class="center label" id="s2txt"><span id="s2small">&nbsp;</span><span class="big serif" id="s2big">&nbsp;</span></div>
+      </div>
+
+      <!-- S3: IDEAS multiplying on the kicks -->
+      <div class="sc" id="S3"></div>
+
+      <!-- S4: 01 Motion Graphics & Animation -->
+      <div class="sc" id="S4">
+        <div class="head"><span class="num">01</span><span class="label">Motion Graphics &amp; Animation</span></div>
+        <div class="ball" id="ba0" style="left: 175px"></div>
+        <div class="ball" id="ba1" style="left: 445px"></div>
+        <div class="ball" id="ba2" style="left: 715px"></div>
+      </div>
+
+      <!-- S5: 02 Video Editing -->
+      <div class="sc" id="S5">
+        <div class="head" style="top: 330px"><span class="num">02</span><span class="label">Video Editing</span></div>
+        <div id="mon"><div id="monTxt" class="serif">Brief</div></div>
+        <div id="tracks">
+          <div class="track" style="top: 0"><div class="clipb" style="left: 0; width: 330px; background: var(--terra)"></div><div class="clipb" style="left: 350px; width: 260px; background: var(--terra)"></div></div>
+          <div class="track" style="top: 80px"><div class="clipb" style="left: 160px; width: 420px; background: var(--cream)"></div></div>
+          <div class="track" style="top: 160px"><div class="clipb" style="left: 480px; width: 420px; background: rgba(248, 236, 219, 0.35)"></div></div>
+          <div id="ph"></div>
+        </div>
+        <div id="flash"></div>
+      </div>
+
+      <!-- S6: 03 tile grid -->
+      <div class="sc" id="S6"><div id="tiles"></div>
+        <div class="head" style="top: 860px"><span class="num" id="s6num" style="font-size: 170px">03</span><span class="label" id="s6lab" style="font-size: 28px">Smooth Transitions &amp; Visual Effects</span></div>
+      </div>
+
+      <!-- S7: packages -->
+      <div class="sc" id="S7" style="background: var(--ink)">
+        <div class="head" style="top: 330px"><span class="num">Packages</span><span class="label">Pick your length</span></div>
+        <div class="card" id="c1" style="top: 640px; background: var(--ink2); border: 2px solid var(--line)"><span class="dur serif">15s</span><span class="name label">Motion Starter</span><span class="sub" style="color: var(--cream)">Clean, smooth, quick.</span></div>
+        <div class="card" id="c2" style="top: 950px; background: var(--terra)"><span class="dur serif">30s</span><span class="name label">Motion Plus</span><span class="sub">Custom type + sound design.</span></div>
+        <div class="card" id="c3" style="top: 1260px; background: var(--cream); color: var(--ink)"><span class="dur serif">60s</span><span class="name label" style="color: var(--ink)">Motion Pro</span><span class="sub">Full styling + colour grade.</span></div>
+      </div>
+
+      <!-- S8: CTA wipes -->
+      <div class="sc" id="S8">
+        <div class="wipe serif" id="w0" style="background: var(--ink)">Let's</div>
+        <div class="wipe serif" id="w1" style="background: var(--terra)">create</div>
+        <div class="wipe serif it" id="w2" style="background: var(--cream); color: var(--ink)">something</div>
+        <div class="wipe serif" id="w3" style="background: var(--ink)">great.</div>
+      </div>
+
+      <!-- S9: final lockup -->
+      <div class="sc" id="S9">
+        <div class="col" style="left: 0; background: var(--ink2)"></div>
+        <div class="col" id="s9col" style="left: 360px; background: var(--terra)"></div>
+        <div class="col" style="left: 720px; background: var(--ink2)"></div>
+        <div class="ring" id="q1" style="top: 380px"></div><div class="ring" id="q2" style="top: 380px"></div>
+        <div id="disc9" style="position: absolute; left: 390px; top: 380px; width: 300px; height: 300px; border-radius: 50%; background: var(--ink)"><div style="position: absolute; left: 118px; top: 88px; width: 0; height: 0; border-top: 62px solid transparent; border-bottom: 62px solid transparent; border-left: 102px solid var(--cream)"></div></div>
+        <div class="stack serif" id="s9stack" style="top: 760px"><span class="l">Motion</span><span class="l">Graphics</span><span class="l sm it">that bring ideas</span><span class="l">to life</span></div>
+        <div class="center label" style="top: 1430px; font-size: 24px">Motion Graphics · Video Editing · VFX</div>
+      </div>
+
+      <!-- persistent chrome -->
+      <div id="chrome">
+        <div id="by" class="label"><span style="color: rgba(248, 236, 219, 0.8)">BY</span><span class="big">EVAN</span></div>
+        <div id="tc">00:00:00:00</div>
+        <div id="beatc" class="label">BEAT 00 / 64</div>
+        <div id="prog"><div id="progf"></div></div>
+        <div id="secl" class="label">INTRO</div>
+        <div id="pk" class="label">15S · 30S · 60S</div>
+      </div>
+
+      <audio id="song" src="assets/audio/vibin-cut.wav" data-start="0" data-duration="28.6" data-track-index="10" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const DUR = 28.6;
+      const TB = window.TIMING.beats.filter((b) => b < DUR); // measured beats, seconds
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+      const C = { ink: "#0d1b18", ink2: "#13241f", terra: "#a24d38", cream: "#f8ecdb" };
+
+      // ---------- build repeated DOM (deterministic) ----------
+      const S3 = $("#S3");
+      for (let i = 0; i < 8; i++) {
+        const d = document.createElement("div");
+        d.className = "idea serif" + (i % 2 ? " it" : "");
+        d.textContent = "ideas";
+        d.style.top = 470 + i * 140 + "px";
+        S3.appendChild(d);
+      }
+      const ideaEls = $$("#S3 .idea");
+      const tiles = $("#tiles");
+      for (let r = 0; r < 11; r++) {
+        if (r >= 5 && r <= 7) continue; // keep the "03" header band clear
+        const row = document.createElement("div");
+        row.className = "row";
+        row.style.top = 290 + r * 112 + "px";
+        for (let i = 0; i < 6; i++) {
+          const p = document.createElement("span");
+          p.className = "pill";
+          p.textContent = (r + i) % 3 === 1 ? "SMOOTH TRANSITIONS" : (r + i) % 3 === 2 ? "VISUAL EFFECTS" : "MOTION";
+          row.appendChild(p);
+        }
+        tiles.appendChild(row);
+      }
+      const rowEls = $$("#tiles .row");
+      const pillEls = $$("#tiles .pill");
+
+      // cache everything the clock writes to (no DOM queries inside the callback)
+      const scenes = $$(".sc");
+      const E = {
+        kw: $("#kw"), S0: $("#S0"), S1: $("#S1"), S2: $("#S2"), S3, S4: $("#S4"), S5: $("#S5"), S6: $("#S6"), S7: $("#S7"), S8: $("#S8"), S9: $("#S9"),
+        disc: $("#disc"), rings: [$("#r1"), $("#r2"), $("#r3")], s2small: $("#s2small"), s2big: $("#s2big"),
+        balls: [$("#ba0"), $("#ba1"), $("#ba2")], mon: $("#mon"), monTxt: $("#monTxt"), ph: $("#ph"), flash: $("#flash"),
+        s6num: $("#s6num"), s6lab: $("#s6lab"), cards: [$("#c1"), $("#c2"), $("#c3")], wipes: [$("#w0"), $("#w1"), $("#w2"), $("#w3")],
+        disc9: $("#disc9"), q: [$("#q1"), $("#q2")], s9stack: $("#s9stack"), s9col: $("#s9col"),
+        tc: $("#tc"), beatc: $("#beatc"), progf: $("#progf"), secl: $("#secl"), chrome: $("#chrome"),
+      };
+
+      // ---------- helpers ----------
+      const beatAt = (t) => { let i = -1; while (i + 1 < TB.length && TB[i + 1] <= t + 1e-6) i++; return i; };
+      const punch = (lt, amt = 0.2, k = 0.07) => 1 + amt * Math.exp(-lt / k); // hit, then settle
+      const easeOut = (x) => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
+      const pad = (n) => String(Math.floor(n)).padStart(2, "0");
+      const show = (el) => { scenes.forEach((s) => (s.style.opacity = s === el ? "1" : "0")); };
+
+      const WORDS = [
+        ["Motion", C.ink, C.cream, false], ["Graphics", C.terra, C.cream, false], ["that", C.cream, C.ink, true], ["bring", C.ink, C.cream, true],
+        ["ideas", C.terra, C.cream, true], ["to", C.cream, C.ink, false], ["life", C.ink, C.cream, false],
+      ];
+      const MON = ["Brief", "Plan", "Design", "Animate", "Type", "Cut", "Colour", "Sound", "Edit", "Polish", "Review", "Deliver"];
+      const PAL = [[C.terra, C.cream, C.ink], [C.cream, C.ink, C.terra], [C.ink2, C.cream, C.ink], [C.cream, C.ink, C.terra]];
+
+      function render(t) {
+        const i = beatAt(t);
+        const lt = i >= 0 ? t - TB[i] : t;
+        // chrome
+        E.tc.textContent = `00:00:${pad(t)}:${pad((t % 1) * 30)}`;
+        E.beatc.textContent = `BEAT ${pad(Math.min(64, Math.max(0, i + 1)))} / 64`;
+        E.progf.style.transform = `scaleX(${(t / DUR).toFixed(4)})`;
+
+        if (i < 0) { show(E.S0); E.S0.style.background = C.ink; E.kw.textContent = ""; E.secl.textContent = "INTRO"; return; }
+
+        if (i <= 6) {                                   // bars 1-2: a word on every beat
+          const [w, bg, fg, ital] = WORDS[i];
+          show(E.S0);
+          E.S0.style.background = bg;
+          E.kw.textContent = w;
+          E.kw.style.color = fg;
+          E.kw.style.fontStyle = ital ? "italic" : "normal";
+          E.kw.style.transform = `scale(${punch(lt, 0.28).toFixed(4)}) rotate(${((i % 2 ? 1 : -1) * 3 * Math.exp(-lt / 0.08)).toFixed(3)}deg)`;
+          E.secl.textContent = "INTRO";
+        } else if (i === 7) {                           // the whole line at once
+          show(E.S1);
+          E.S1.style.transform = `scale(${punch(lt, 0.12, 0.1).toFixed(4)})`;
+        } else if (i <= 11) {                           // bar 3: play pressed, BY / EVAN / packages
+          show(E.S2);
+          const k = i - 8;
+          const pressT = t - TB[8];
+          E.disc.style.transform = `scale(${(pressT < 0.06 ? 0.86 : 1 + 0.1 * Math.exp(-(pressT - 0.06) / 0.08)).toFixed(4)})`;
+          E.rings.forEach((r, j) => {
+            const x = easeOut((pressT - j * 0.06) / 0.5);
+            r.style.transform = `scale(${(1 + 1.1 * x).toFixed(4)})`;
+            r.style.opacity = (pressT - j * 0.06 > 0 ? 1 - x * 0.8 : 0).toFixed(3);
+          });
+          E.s2small.textContent = ["", "BY", "BY", "15S · 30S · 60S"][k];
+          E.s2big.textContent = [" ", "EVAN", "EVAN", "PACKAGES"][k];
+          E.s2big.style.transform = `scale(${punch(lt, 0.18).toFixed(4)})`;
+          E.s2big.style.fontSize = k === 3 ? "96px" : "150px";
+          E.secl.textContent = "BY EVAN";
+        } else if (i <= 15) {                           // bar 4: the kick run multiplies "ideas" 1-2-4-8
+          show(E.S3);
+          const k = i - 12;
+          const n = [1, 2, 4, 8][k];
+          const inv = k >= 2 && Math.floor(lt / 0.215) % 2 === 1;
+          E.S3.style.background = inv ? C.cream : k % 2 ? C.terra : C.ink;
+          ideaEls.forEach((el, j) => {
+            const order = [3, 4, 2, 5, 1, 6, 0, 7].indexOf(j);
+            el.style.opacity = order < n ? "1" : "0";
+            el.style.color = inv ? C.ink : C.cream;
+            el.style.transform = `translateX(${((j % 2 ? 1 : -1) * 60 * Math.exp(-lt / 0.09)).toFixed(2)}px)`;
+          });
+          E.secl.textContent = "IDEAS";
+        } else if (i <= 27) {                           // bars 5-7: 01, shapes bounce on every beat
+          show(E.S4);
+          const bar = Math.floor((i - 16) / 4);
+          E.S4.style.background = [C.ink, C.terra, C.ink2][bar];
+          E.balls.forEach((b, j) => {
+            // each ball lands on its own beat of the bar (beats 2-4); beat 1 they all jump
+            const myBeat = (i - 16) % 4 === j + 1;
+            const sinceLand = myBeat ? lt : 1;
+            const pre = Math.max(0, (TB[i + 1] || t) - t);
+            const nextMine = ((i + 1 - 16) % 4) === j + 1;
+            let y = 0, sx = 1, sy = 1;
+            if (nextMine && pre < 0.2) y = -500 * Math.pow(pre / 0.2, 2); // falls in, lands on its beat
+            if (myBeat) { const sq = Math.exp(-sinceLand / 0.06); sx = 1 + 0.28 * sq; sy = 1 - 0.3 * sq; }
+            if ((i - 16) % 4 === 0) { y = -180 * Math.sin(Math.min(1, lt / 0.43) * Math.PI); }
+            b.style.transform = `translateY(${y.toFixed(2)}px) scale(${sx.toFixed(4)}, ${sy.toFixed(4)}) rotate(${(-14 + (j - 1) * 6).toFixed(1)}deg)`;
+            b.style.transformOrigin = "50% 100%";
+            b.style.background = bar === 1 ? C.cream : j === bar % 3 ? C.terra : C.cream;
+            b.style.borderRadius = i >= 26 ? `${(50 - 28 * easeOut((t - TB[26]) / 0.3)).toFixed(1)}%` : "50%";
+          });
+          E.secl.textContent = "01 · ANIMATION";
+        } else if (i <= 43) {                           // bars 8-11: 02, the monitor cuts on every beat
+          show(E.S5);
+          const k = i - 28;
+          const half = i >= 29 && i <= 32 && lt >= 0.215 ? 1 : 0; // heavy kick run: cut on the half-beats too
+          E.monTxt.textContent = MON[(k + half + (i > 32 ? 4 : 0)) % MON.length];
+          const pal = PAL[(k + half) % PAL.length];
+          E.mon.style.background = pal[0];
+          E.monTxt.style.color = pal[1];
+          E.monTxt.style.fontStyle = (k + half) % 2 ? "italic" : "normal";
+          E.mon.style.transform = `scale(${punch(half ? lt - 0.215 : lt, 0.05, 0.06).toFixed(4)})`;
+          E.ph.style.transform = `translateX(${(((k + half * 0.5) / 16) * 896).toFixed(1)}px)`;
+          const snareHit = (i === 35 || i === 36) ? Math.exp(-lt / 0.07) : 0;
+          E.flash.style.opacity = (snareHit * 0.85).toFixed(3);
+          E.secl.textContent = "02 · EDITING";
+        } else if (i <= 51) {                           // bars 12-13: 03, the tile grid flips on every beat
+          show(E.S6);
+          const k = i - 44;
+          const [bg, fg, ground] = PAL[k % PAL.length];
+          E.S6.style.background = ground;
+          pillEls.forEach((p, j) => {
+            const on = (j + k) % 2 === 1;
+            p.style.background = on ? bg : "transparent";
+            p.style.color = on ? (bg === C.cream ? C.ink : C.cream) : fg === C.ink && ground !== C.cream ? C.cream : fg;
+            p.style.border = on ? "none" : `2px solid ${ground === C.cream ? C.ink : C.cream}`;
+          });
+          rowEls.forEach((r, j) => {
+            const target = (j % 2 ? -1 : 1) * 160 * (k + 1);
+            const prev = (j % 2 ? -1 : 1) * 160 * k;
+            r.style.transform = `translateX(${(prev + (target - prev) * easeOut(lt / 0.18)).toFixed(1)}px)`;
+          });
+          E.s6num.style.color = ground === C.cream ? C.ink : C.cream;
+          E.s6lab.style.color = ground === C.cream ? C.ink : C.cream;
+          E.s6num.parentElement.style.background = ground;
+          E.s6num.parentElement.style.padding = "30px 0";
+          E.s6num.style.transform = `scale(${punch(lt, 0.15).toFixed(4)})`;
+          E.secl.textContent = "03 · TRANSITIONS & VFX";
+        } else if (i <= 55) {                           // bar 14: packages land on the beats
+          show(E.S7);
+          E.cards.forEach((c, j) => {
+            const land = TB[52 + j];
+            const x = t < land ? -1200 : 0;
+            c.style.transform = `translateX(${x}px) scale(${t >= land ? punch(t - land, 0.06, 0.08).toFixed(4) : 1})`;
+          });
+          E.secl.textContent = "PACKAGES";
+        } else if (i <= 59) {                           // bar 15: "Let's create something great." one wipe per beat
+          show(E.S8);
+          E.wipes.forEach((w, j) => {
+            const st = TB[56 + j] - 0.1;
+            const x = easeOut((t - st) / 0.16);
+            w.style.clipPath = j === 0 ? "inset(0 0 0 0)" : `inset(0 0 0 ${((1 - x) * 100).toFixed(2)}%)`;
+            w.style.opacity = t >= st || j === 0 ? "1" : "0";
+          });
+          E.secl.textContent = "LET'S TALK";
+        } else {                                        // bar 16 + end: the lockup, pulsing on the kicks
+          show(E.S9);
+          const p = punch(lt, i >= 64 ? 0.1 : 0.06, 0.09);
+          E.disc9.style.transform = `scale(${p.toFixed(4)})`;
+          E.q.forEach((q, j) => {
+            const x = easeOut((lt - j * 0.05) / 0.4);
+            q.style.left = 390 + "px";
+            q.style.transform = `scale(${(1 + 0.8 * x).toFixed(4)})`;
+            q.style.opacity = (lt - j * 0.05 > 0 ? 0.9 * (1 - x) : 0).toFixed(3);
+          });
+          E.s9stack.style.transform = `scale(${(i === 60 ? punch(lt, 0.1, 0.12) : 1).toFixed(4)})`;
+          E.s9col.style.transform = `scaleY(${easeOut((t - TB[60] + 0.08) / 0.18).toFixed(4)})`;
+          E.s9col.style.transformOrigin = "50% 0%";
+          E.secl.textContent = "MESSAGE ME ON FIVERR";
+        }
+      }
+
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.to(clock, { t: DUR, duration: DUR, ease: "none", onUpdate: () => render(clock.t) }, 0);
+      render(0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

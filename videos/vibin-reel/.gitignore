@@ -1,0 +1,4 @@
+renders/.*-transaction-*/
+renders/work-*/
+snapshots/
+audio/takes/
