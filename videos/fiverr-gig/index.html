@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Playfair Display"; font-weight: 700; font-style: normal; src: url("assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Playfair Display"; font-weight: 700; font-style: italic; src: url("assets/fonts/playfair-display-latin-700-italic.woff2") format("woff2"); }
+      @font-face { font-family: "Jost"; font-weight: 500; font-style: normal; src: url("assets/fonts/jost-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Jost"; font-weight: 600; font-style: normal; src: url("assets/fonts/jost-latin-600-normal.woff2") format("woff2"); }
+      :root {
+        --ink: #0d1b18;      /* ground: deep green-black */
+        --ink2: #13241f;     /* side panels */
+        --terra: #a24d38;    /* the column, the one accent */
+        --terra-d: #6e3326;  /* ellipses, shadows on terracotta */
+        --cream: #f8ecdb;    /* all type */
+        --line: rgba(246, 229, 207, 0.22);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ink); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--ink); color: var(--cream); font-family: "Jost", sans-serif; }
+      .layer { position: absolute; inset: 0; }
+      .serif { font-family: "Playfair Display", serif; font-weight: 700; }
+      .label { font-family: "Jost", sans-serif; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; font-size: 22px; color: var(--cream); }
+      .muted { color: rgba(246, 229, 207, 0.78); }
+
+      /* world: three columns */
+      .col { position: absolute; top: 0; height: 1080px; }
+      #colL { left: 0; width: 640px; background: radial-gradient(520px 420px at 30% 92%, rgba(120, 82, 52, 0.28), transparent 70%), var(--ink2); }
+      #colR { left: 1280px; width: 640px; background: radial-gradient(520px 420px at 70% 8%, rgba(120, 82, 52, 0.22), transparent 70%), var(--ink2); }
+      #colC { left: 640px; width: 640px; background: var(--terra); transform-origin: 50% 0%; }
+      #ellipses { position: absolute; left: 640px; top: 0; width: 640px; height: 1080px; overflow: hidden; }
+      .ell { position: absolute; width: 150px; height: 380px; border-radius: 50%; background: rgba(78, 34, 24, 0.72); top: 640px; }
+
+      /* chrome */
+      #ruler { position: absolute; left: 0; top: 0; width: 24px; height: 1080px; }
+      .tick { position: absolute; left: 0; height: 2px; background: var(--line); }
+      .tc { position: absolute; font-family: "Jost", sans-serif; font-weight: 500; font-size: 20px; letter-spacing: 0.2em; color: rgba(246, 229, 207, 0.78); }
+      .corner { position: absolute; }
+      .corner .big { display: block; font-size: 30px; margin-top: 8px; }
+      .corner.r { text-align: right; }
+      .botlabel { position: absolute; top: 960px; line-height: 1.6; }
+      svg.deco { position: absolute; overflow: visible; }
+      #rec { position: absolute; left: 96px; top: 800px; width: 300px; height: 120px; }
+      #recLabel { position: absolute; left: 0; top: 0; font-size: 18px; }
+      #recDot { position: absolute; left: 70px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--terra); }
+      .bar { position: absolute; bottom: 0; width: 5px; height: 80px; background: rgba(246, 229, 207, 0.4); transform-origin: 50% 50%; top: 40px; }
+
+      /* play button + rings */
+      #rings { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      .ring { position: absolute; width: 260px; height: 260px; border-radius: 50%; border: 2px solid rgba(246, 229, 207, 0.4); top: 100px; }
+      #disc { position: absolute; left: 830px; top: 100px; width: 260px; height: 260px; border-radius: 50%; background: var(--ink); }
+      #tri { position: absolute; left: 104px; top: 78px; width: 0; height: 0; border-top: 52px solid transparent; border-bottom: 52px solid transparent; border-left: 86px solid var(--cream); transform-origin: 0% 50%; }
+
+      /* title */
+      #title { position: absolute; left: 0; top: 330px; width: 1920px; text-align: center; color: var(--cream); }
+      .tline { display: block; font-size: 170px; line-height: 1.02; white-space: nowrap; }
+      .tline.it { font-style: italic; }
+      .w { display: inline-block; }
+      .ch { display: inline-block; }
+
+      /* sections */
+      .sec { position: absolute; inset: 0; opacity: 0; }
+      .head { position: absolute; left: 0; top: 70px; width: 1920px; text-align: center; }
+      .head .num { display: block; font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 84px; line-height: 1; }
+      .head .label { display: block; margin-top: 14px; }
+      .full { position: absolute; inset: 0; }
+      .bounce { position: absolute; width: 170px; height: 420px; border-radius: 50%; background: var(--cream); top: 430px; }
+
+      .slam { position: absolute; inset: 0; }
+      #morph { position: absolute; left: 820px; top: 400px; width: 280px; height: 280px; border-radius: 50%; background: var(--cream); }
+      #bigCurve { position: absolute; left: 0; top: 0; }
+
+      #monitor { position: absolute; left: 560px; top: 230px; width: 800px; height: 420px; border: 2px solid var(--line); overflow: hidden; background: var(--ink2); }
+      .shot { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 150px; opacity: 0; }
+      #tracks { position: absolute; left: 360px; top: 720px; width: 1200px; height: 220px; }
+      .track { position: absolute; left: 0; width: 1200px; height: 56px; border-top: 1px solid var(--line); }
+      .clipbox { position: absolute; top: 8px; height: 40px; border-radius: 6px; }
+      #playhead { position: absolute; left: 0; top: -20px; width: 3px; height: 240px; background: var(--cream); }
+      #tcMon { position: absolute; left: 560px; top: 666px; }
+
+      .wipe { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 210px; }
+      #zoomDisc { position: absolute; left: 860px; top: 440px; width: 200px; height: 200px; border-radius: 50%; background: var(--ink); }
+
+      #grid { position: absolute; inset: 0; background: var(--ink); overflow: hidden; }
+      .grow { position: absolute; left: -400px; height: 120px; white-space: nowrap; }
+      .pill { display: inline-block; margin-right: 26px; padding: 0 34px; height: 104px; line-height: 104px; font-family: "Jost", sans-serif; font-weight: 600; font-size: 46px; letter-spacing: 0.06em; border-radius: 52px; }
+      #leak { position: absolute; left: -600px; top: -200px; width: 1100px; height: 1400px; background: radial-gradient(closest-side, rgba(255, 214, 160, 0.32), transparent); }
+      #flash { position: absolute; inset: 0; background: var(--cream); opacity: 0; }
+
+      .card { position: absolute; top: 300px; width: 460px; height: 560px; border-radius: 18px; padding: 44px 40px; }
+      .card .dur { display: block; font-size: 150px; line-height: 1; }
+      .card .name { display: block; margin-top: 30px; font-size: 26px; }
+      .card .tcard { display: block; margin-top: 18px; font-size: 22px; letter-spacing: 0.2em; }
+      .card .desc { display: block; margin-top: 36px; font-size: 28px; line-height: 1.4; letter-spacing: 0.02em; font-weight: 500; text-transform: none; }
+
+      #pauseTxt { position: absolute; left: 0; top: 515px; width: 1920px; text-align: center; font-size: 34px; }
+      #cursor { display: inline-block; width: 3px; height: 34px; background: var(--cream); margin-left: 8px; vertical-align: -4px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="34.8" data-width="1920" data-height="1080">
+      <!-- ============ WORLD (cold open + lockup) ============ -->
+      <div id="world" class="layer">
+        <div id="colL" class="col"></div>
+        <div id="colR" class="col"></div>
+        <div id="colC" class="col"></div>
+        <div id="ellipses" data-layout-allow-overflow></div>
+
+        <div id="chrome" class="layer">
+          <div id="ruler"></div>
+          <svg class="deco" id="arcs" width="1920" height="1080" viewBox="0 0 1920 1080" style="left:0;top:0">
+            <g fill="none" stroke="rgba(246,229,207,0.10)" stroke-width="2">
+              <circle cx="-120" cy="560" r="330" /><circle cx="-120" cy="560" r="460" /><circle cx="-120" cy="560" r="590" />
+              <circle cx="2060" cy="620" r="330" /><circle cx="2060" cy="620" r="460" /><circle cx="2060" cy="620" r="590" />
+            </g>
+          </svg>
+          <svg class="deco" id="dashTL" width="180" height="180" viewBox="0 0 180 180" style="left:200px;top:120px">
+            <circle class="drawc" cx="90" cy="90" r="80" fill="none" stroke="rgba(246,229,207,0.45)" stroke-width="2" stroke-dasharray="6 9" />
+          </svg>
+          <svg class="deco" id="dashBR" width="180" height="180" viewBox="0 0 180 180" style="left:1600px;top:840px">
+            <circle class="drawc" cx="90" cy="90" r="80" fill="none" stroke="rgba(246,229,207,0.45)" stroke-width="2" stroke-dasharray="6 9" />
+          </svg>
+          <svg class="deco" id="marks" width="1920" height="1080" viewBox="0 0 1920 1080" style="left:0;top:0">
+            <g class="xh" stroke="rgba(246,229,207,0.5)" stroke-width="2">
+              <path d="M520 110v24M508 122h24" /><path d="M150 330v24M138 342h24" /><path d="M560 640v24M548 652h24" />
+              <path d="M1580 300v24M1568 312h24" /><path d="M1720 860v24M1708 872h24" /><path d="M1400 120v24M1388 132h24" />
+            </g>
+            <g class="dia" fill="rgba(246,229,207,0.55)">
+              <rect x="74" y="760" width="16" height="16" transform="rotate(45 82 768)" />
+              <rect x="1836" y="700" width="16" height="16" transform="rotate(45 1844 708)" />
+              <rect x="1720" y="200" width="14" height="14" transform="rotate(45 1727 207)" />
+            </g>
+          </svg>
+          <svg class="deco" id="bez" width="460" height="160" viewBox="0 0 460 160" style="left:1400px;top:860px">
+            <path id="bezPath" d="M10 140 C 170 140, 230 20, 450 18" fill="none" stroke="rgba(246,229,207,0.7)" stroke-width="3" />
+            <g fill="none" stroke="rgba(246,229,207,0.7)" stroke-width="2"><circle class="bh" cx="10" cy="140" r="7" fill="rgba(246,229,207,0.8)" /><circle class="bh" cx="170" cy="140" r="7" /><circle class="bh" cx="230" cy="20" r="7" /><circle class="bh" cx="450" cy="18" r="7" fill="rgba(246,229,207,0.8)" /></g>
+          </svg>
+          <div id="rec"><span id="recLabel" class="label muted">REC</span><div id="recDot"></div><div id="bars"></div></div>
+          <div class="corner label" id="cTL" style="left:96px;top:72px"><span class="muted">BY</span><span class="big">EVAN</span></div>
+          <div class="corner r label" id="cTR" style="left:1424px;top:72px;width:400px"><span class="muted" id="pkgSmall">15S · 30S · 60S</span><span class="big">PACKAGES</span></div>
+          <div class="tc" id="tcL" style="left:96px;top:215px">00:00:00:00</div>
+          <div class="tc" id="tcR" style="left:1624px;top:215px;width:200px;text-align:right">00:00:30</div>
+          <div class="botlabel label" id="bl1" style="left:96px">MOTION GRAPHICS<br />&amp; ANIMATION</div>
+          <div class="botlabel label" id="bl2" style="left:760px;width:400px;text-align:center">VIDEO<br />EDITING</div>
+          <div class="botlabel label" id="bl3" style="left:1324px;width:500px;text-align:right">SMOOTH TRANSITIONS<br />&amp; VISUAL EFFECTS</div>
+        </div>
+
+        <div id="rings"><div class="ring" id="ring1"></div><div class="ring" id="ring2"></div><div class="ring" id="ring3"></div></div>
+        <div id="disc"><div id="tri"></div></div>
+        <div id="title" class="serif" data-layout-allow-overlap>
+          <span class="tline"><span class="w" id="wMotion">Motion</span> <span class="w" id="wGraphics">Graphics</span></span>
+          <span class="tline it"><span class="w" id="wThat">that</span> <span class="w" id="wBring">bring</span> <span class="w" id="wIdeas">ideas</span></span>
+          <span class="tline"><span class="w" id="wTo">to</span> <span class="w" id="wLife">life</span></span>
+        </div>
+      </div>
+
+      <!-- ============ 01 MOTION GRAPHICS & ANIMATION ============ -->
+      <div id="s01" class="sec">
+        <div class="head"><span class="num">01</span><span class="label">Motion Graphics &amp; Animation</span></div>
+        <div class="bounce" id="b1" style="left:690px"></div>
+        <div class="bounce" id="b2" style="left:875px"></div>
+        <div class="bounce" id="b3" style="left:1060px"></div>
+      </div>
+      <div id="slams" class="sec">
+        <div class="slam" id="slamA" style="background: var(--terra)"></div>
+        <div class="slam" id="slamB" style="background: var(--cream)"></div>
+        <div class="slam" id="slamC" style="background: var(--ink2)"></div>
+        <div class="slam" id="slamD" style="background: var(--terra)">
+          <div id="morph"></div>
+          <svg id="bigCurve" width="1920" height="1080" viewBox="0 0 1920 1080">
+            <path id="bigCurvePath" d="M260 860 C 760 860, 1060 220, 1660 220" fill="none" stroke="#f8ecdb" stroke-width="5" />
+            <g fill="#f8ecdb"><rect class="kd" x="250" y="850" width="20" height="20" transform="rotate(45 260 860)" /><rect class="kd" x="1650" y="210" width="20" height="20" transform="rotate(45 1660 220)" /></g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- ============ 02 VIDEO EDITING ============ -->
+      <div id="s02" class="sec">
+        <div class="full" style="background: var(--ink)"></div>
+        <div class="head"><span class="num">02</span><span class="label">Video Editing</span></div>
+        <div id="monitor">
+          <div class="shot serif" id="shot0" style="font-style: italic; opacity: 1">ideas</div>
+          <div class="shot serif" id="shot1" style="background: var(--terra)">Brief</div>
+          <div class="shot serif" id="shot2" style="background: var(--cream); color: var(--ink)">Design</div>
+          <div class="shot serif" id="shot3" style="font-style: italic">Edit</div>
+          <div class="shot serif" id="shot4" style="background: var(--terra); font-style: italic">Review</div>
+          <div class="shot serif" id="shot5" style="background: var(--cream); color: var(--ink)">Deliver</div>
+        </div>
+        <div class="tc" id="tcMon">00:00:00:00</div>
+        <div id="tracks">
+          <div class="track" style="top: 0px"><div class="clipbox" id="clip1" style="left: 0; width: 420px; background: var(--terra)"></div></div>
+          <div class="track" style="top: 70px"><div class="clipbox" id="clip2" style="left: 300px; width: 520px; background: var(--cream)"></div></div>
+          <div class="track" style="top: 140px"><div class="clipbox" id="clip3" style="left: 700px; width: 500px; background: rgba(246, 229, 207, 0.35)"></div></div>
+          <div id="playhead"></div>
+        </div>
+      </div>
+
+      <!-- ============ 03 TRANSITIONS & VFX ============ -->
+      <div id="s03" class="sec">
+        <div class="head"><span class="num">03</span><span class="label">Smooth Transitions &amp; Visual Effects</span></div>
+        <div class="wipe serif" id="wipe1" style="background: var(--terra); font-style: italic">Smooth</div>
+        <div class="wipe serif" id="wipe2" style="background: var(--cream); color: var(--ink)">Transitions</div>
+        <div id="zoomDisc"></div>
+      </div>
+
+      <!-- ============ PEAK: tile grid ============ -->
+      <div id="gridSec" class="sec"><div id="grid"></div><div id="leak"></div><div id="flash"></div></div>
+
+      <!-- ============ PACKAGES ============ -->
+      <div id="pk" class="sec">
+        <div class="full" style="background: var(--ink)"></div>
+        <div class="head"><span class="num">Packages</span><span class="label">Pick your length</span></div>
+        <div class="card" id="card1" style="left: 210px; background: var(--ink2); border: 2px solid var(--line)">
+          <span class="dur serif">15s</span><span class="name label">Motion Starter</span><span class="tcard label muted" id="tc1">00:00:00</span><span class="desc">Clean animations, smooth transitions.</span>
+        </div>
+        <div class="card" id="card2" style="left: 730px; background: var(--terra)">
+          <span class="dur serif">30s</span><span class="name label">Motion Plus</span><span class="tcard label" id="tc2">00:00:00</span><span class="desc">Custom text animation and sound design.</span>
+        </div>
+        <div class="card" id="card3" style="left: 1250px; background: var(--cream); color: var(--ink)">
+          <span class="dur serif">60s</span><span class="name label" style="color: var(--ink)">Motion Pro</span><span class="tcard label" id="tc3" style="color: var(--ink)">00:00:00</span><span class="desc">Full visual styling, colour grading, detailed animation.</span>
+        </div>
+      </div>
+
+      <!-- ============ PAUSE ============ -->
+      <div id="pause" class="sec">
+        <div class="full" style="background: var(--ink)"></div>
+        <div id="pauseTxt" class="label"><span id="typed"></span><span id="cursor"></span></div>
+      </div>
+
+      <audio id="sfx" src="assets/audio/sfx.wav" data-start="0" data-duration="34.8" data-track-index="10" data-volume="1"></audio>
+      <audio id="bed" src="assets/audio/bed.wav" data-start="0" data-duration="34.8" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="room" src="assets/audio/room.wav" data-start="0" data-duration="34.8" data-track-index="12" data-volume="0.05"></audio>
+    </div>
+
+    <script>
+      // ---------- timing grid: 100 bpm, beat 0.6 s, bar 2.4 s (same as audio/make_cues.py) ----------
+      const B = 0.6;
+      const b = (n, beat = 0) => +((n - 1) * 4 * B + beat * B).toFixed(4);
+      const DUR = 34.8;
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+      let seed = 7;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647); // seeded, deterministic
+
+      // ---------- build repeated DOM ----------
+      const ruler = $("#ruler");
+      for (let i = 0; i < 60; i++) {
+        const t = document.createElement("div");
+        t.className = "tick";
+        t.style.top = 10 + i * 18 + "px";
+        t.style.width = (i % 5 === 0 ? 22 : 11) + "px";
+        ruler.appendChild(t);
+      }
+      const bars = $("#bars");
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement("div");
+        d.className = "bar";
+        d.style.left = i * 13 + "px";
+        bars.appendChild(d);
+      }
+      const ells = $("#ellipses");
+      [[170, -16], [255, -16], [340, -16]].forEach(([x, r], i) => {
+        const e = document.createElement("div");
+        e.className = "ell";
+        e.setAttribute("data-layout-allow-overflow", "");
+        e.id = "ell" + i;
+        e.style.left = x + "px";
+        e.style.opacity = String(0.55 + 0.2 * i);
+        ells.appendChild(e);
+      });
+      [["ring1", 560], ["ring2", 640], ["ring3", 720]].forEach(([id, x]) => ($("#" + id).style.left = x + "px"));
+      // title words -> letters (for the scatter)
+      $$("#title .w").forEach((w) => {
+        const txt = w.textContent;
+        w.textContent = "";
+        for (const c of txt) {
+          const s = document.createElement("span");
+          s.className = "ch";
+          s.textContent = c;
+          w.appendChild(s);
+        }
+      });
+      // tile grid
+      const grid = $("#grid");
+      const ROWS = 8;
+      for (let r = 0; r < ROWS; r++) {
+        const row = document.createElement("div");
+        row.className = "grow";
+        row.style.top = 12 + r * 134 + "px";
+        for (let i = 0; i < 7; i++) {
+          const p = document.createElement("span");
+          p.className = "pill";
+          p.textContent = (r + i) % 3 === 2 ? "BRING IDEAS TO LIFE" : "MOTION GRAPHICS";
+          row.appendChild(p);
+        }
+        grid.appendChild(row);
+      }
+
+      // ---------- timeline ----------
+      // fromTo tweens apply their from-state only when they start (opt back in where an element must wait off-screen)
+      const tl = gsap.timeline({ paused: true, defaults: { immediateRender: false } });
+      const show = (sel, t) => tl.set(sel, { opacity: 1 }, t);
+      const hide = (sel, t) => tl.set(sel, { opacity: 0 }, t);
+      const bezLen = $("#bezPath").getTotalLength();
+      const bigLen = $("#bigCurvePath").getTotalLength();
+
+      // initial state (t = 0)
+      gsap.set("#colC", { scaleY: 0, xPercent: 0 });
+      gsap.set(["#ruler .tick"], { scaleX: 0, transformOrigin: "0% 50%" });
+      gsap.set(["#recLabel", "#recDot", "#bars", "#tcL", "#tcR", "#cTL", "#cTR", "#bl1", "#bl2", "#bl3", "#arcs"], { opacity: 0 });
+      gsap.set(["#dashTL", "#dashBR"], { scale: 0, rotation: -120, transformOrigin: "50% 50%" });
+      gsap.set(".xh path", { scale: 0, transformOrigin: "50% 50%" });
+      gsap.set(".dia rect", { opacity: 0 });
+      gsap.set("#bezPath", { strokeDasharray: bezLen, strokeDashoffset: bezLen });
+      gsap.set(".bh", { scale: 0, transformOrigin: "50% 50%" });
+      gsap.set("#disc", { scale: 0 });
+      gsap.set("#tri", { scaleX: 0 });
+      gsap.set(".ring", { opacity: 0, scale: 0.6 });
+      gsap.set("#title .w", { opacity: 0, y: 70 });
+      gsap.set(".ell", { y: -1200 });
+      gsap.set("#pkgSmall", { opacity: 0 });
+
+      // clock: timecodes + REC waveform, all derived from t
+      const clock = { t: 0 };
+      const pad = (n) => String(Math.floor(n)).padStart(2, "0");
+      const tcStr = (t) => `00:00:${pad(t)}:${pad((t % 1) * 60)}`;
+      const barEls = $$("#bars .bar");
+      const tcL = $("#tcL"), tcMon = $("#tcMon"), typedEl = $("#typed");
+      tl.to(clock, {
+        t: DUR, duration: DUR, ease: "none",
+        onUpdate: () => {
+          const t = clock.t;
+          tcL.textContent = tcStr(t);
+          tcMon.textContent = tcStr(Math.max(0, t - b(7)));
+          // "BY EVAN" types on in the pause, one key every 0.09 s from bar 12 beat 1 (matches the key cues)
+          const n = Math.max(0, Math.min(7, Math.floor((t - b(12, 1)) / 0.09) + 1));
+          typedEl.textContent = "BY EVAN".slice(0, n);
+          const beatPhase = (t % B) / B;
+          const kick = Math.exp(-beatPhase * 5);
+          barEls.forEach((el, i) => {
+            const v = 0.25 + 0.35 * Math.abs(Math.sin(t * 3.1 + i * 0.9)) * (0.6 + 0.4 * Math.sin(t * 1.3 + i)) + 0.4 * kick * (i % 3 === 0 ? 1 : 0.5);
+            el.style.transform = `scaleY(${Math.min(1, v).toFixed(3)})`;
+          });
+        },
+      }, 0);
+
+      // ---- Bar 1: cold open
+      tl.to(["#recLabel", "#recDot", "#bars", "#tcL"], { opacity: 1, duration: 0.08 }, b(1, 0.5));
+      tl.to("#recDot", { opacity: 0.25, duration: 0.3, repeat: 9, yoyo: true, ease: "steps(1)" }, b(1, 1));
+      tl.to(["#dashTL", "#dashBR"], { scale: 1, rotation: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, b(1, 1));
+      tl.to("#arcs", { opacity: 1, duration: 1.2 }, b(1, 1));
+      tl.to(".xh path", { scale: 1, duration: 0.25, ease: "back.out(2.5)", stagger: 0.03 }, b(1, 2));
+      tl.to(".dia rect", { opacity: 1, duration: 0.05, stagger: 0.06 }, b(1, 2));
+      tl.to("#ruler .tick", { scaleX: 1, duration: 0.15, stagger: 0.007, ease: "power2.out" }, b(1, 3));
+
+      // ---- Bar 2: the terracotta column slams in and shifts on the beats
+      tl.to("#colC", { scaleY: 1, duration: 0.14, ease: "power4.in" }, b(2) - 0.14);
+      tl.fromTo("#world", { y: 0 }, { y: 10, duration: 0.05, yoyo: true, repeat: 1, ease: "power2.out" }, b(2));
+      [[1, -34], [2, 34], [3, 0]].forEach(([bt, xp]) => tl.to("#colC", { xPercent: xp, duration: 0.16, ease: "power4.out" }, b(2, bt)));
+      tl.to("#bezPath", { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, b(2, 1));
+      tl.to(".bh", { scale: 1, duration: 0.2, ease: "back.out(3)", stagger: 0.1 }, b(2, 1));
+      tl.fromTo("#disc", { scale: 0, y: -120 }, { scale: 1, y: 0, duration: 0.22, ease: "power3.in" }, b(2, 2) - 0.22);
+      tl.to("#disc", { scaleX: 1.08, scaleY: 0.92, duration: 0.07, yoyo: true, repeat: 1 }, b(2, 2));
+      tl.to("#tri", { scaleX: 1, duration: 0.25, ease: "power3.out" }, b(2, 3));
+      tl.to(["#tcR", "#cTL", "#cTR"], { opacity: 1, duration: 0.1, stagger: 0.1 }, b(2, 3));
+
+      // ---- Bar 3-4: PRESS, then one word per beat
+      tl.to("#disc", { scale: 0.86, duration: 0.06, ease: "power2.in" }, b(3) - 0.06);
+      tl.to("#disc", { scale: 1, duration: 0.35, ease: "back.out(3)" }, b(3));
+      tl.to(".ring", { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out", stagger: 0.08 }, b(3));
+      tl.to(["#bl1", "#bl2", "#bl3"], { opacity: 1, duration: 0.1, stagger: 0.15 }, b(3, 0.5));
+      const word = (id, t, ease = "power4.out") => tl.to(id, { opacity: 1, y: 0, duration: 0.28, ease }, t);
+      word("#wMotion", b(3, 1)); word("#wGraphics", b(3, 2)); word("#wThat", b(3, 3)); word("#wBring", b(3, 3.5));
+      word("#wIdeas", b(4)); word("#wTo", b(4, 1)); word("#wLife", b(4, 2));
+      tl.fromTo("#wGraphics", { scale: 1.06 }, { scale: 1, duration: 0.4 }, b(3, 2));
+      tl.fromTo("#wLife", { scale: 1.08 }, { scale: 1, duration: 0.5 }, b(4, 2));
+      // three ellipses fall into the column on the half-beats
+      [0, 1, 2].forEach((i) => {
+        tl.to("#ell" + i, { y: 0, duration: 0.24, ease: "power3.in" }, b(4, 3 + i * 0.25) - 0.24);
+        tl.to("#ell" + i, { scaleY: 0.9, scaleX: 1.08, duration: 0.06, yoyo: true, repeat: 1, transformOrigin: "50% 100%" }, b(4, 3 + i * 0.25));
+      });
+      // the title SCATTERS into letters
+      const chs = $$("#title .ch");
+      chs.forEach((c) => {
+        const a = rnd() * Math.PI * 2;
+        const d = 500 + rnd() * 900;
+        tl.to(c, { x: Math.cos(a) * d, y: Math.sin(a) * d * 0.7, rotation: (rnd() - 0.5) * 300, opacity: 0, duration: 0.55, ease: "power3.in" }, b(4, 3) + rnd() * 0.12);
+      });
+      tl.to(["#disc", ".ring"], { scale: 0, duration: 0.3, ease: "power3.in" }, b(4, 3));
+
+      // ---- Bar 5: 01 MOTION GRAPHICS & ANIMATION
+      hide(["#title", "#disc", "#rings", "#ellipses"], b(5));
+      tl.to(["#chrome"], { opacity: 0.35, duration: 0.1 }, b(5));
+      show("#s01", b(5));
+      tl.fromTo("#s01 .head", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power4.out" }, b(5));
+      [1, 2, 3].forEach((n, i) => {
+        const t = b(5, n);
+        tl.fromTo("#b" + n, { y: -1100 }, { y: 0, duration: 0.3, ease: "power2.in", immediateRender: true }, t - 0.3);
+        tl.to("#b" + n, { scaleY: 0.72, scaleX: 1.22, duration: 0.07, transformOrigin: "50% 100%", ease: "power2.out" }, t);
+        tl.to("#b" + n, { scaleY: 1.08, scaleX: 0.94, duration: 0.14, ease: "power2.out" }, t + 0.07);
+        tl.to("#b" + n, { scaleY: 1, scaleX: 1, rotation: -14, duration: 0.3, ease: "elastic.out(1, 0.5)" }, t + 0.21);
+      });
+      // ---- Bar 6: colour panel slams, accelerating; morph; curve
+      hide("#s01", b(6));
+      show("#slams", b(6));
+      [["#slamA", 0, -1], ["#slamB", 1, 1], ["#slamC", 1.5, -1], ["#slamD", 2, 1]].forEach(([id, bt, dir]) => {
+        tl.fromTo(id, { xPercent: dir * 100 }, { xPercent: 0, duration: 0.12, ease: "power4.in", immediateRender: true }, b(6, bt) - 0.12);
+      });
+      tl.fromTo("#morph", { scale: 0, borderRadius: "50%" }, { scale: 1, duration: 0.25, ease: "back.out(2)" }, b(6, 2));
+      tl.to("#morph", { borderRadius: "22%", rotation: 45, width: 300, height: 300, duration: 0.3, ease: "power3.inOut" }, b(6, 2.5) - 0.3);
+      gsap.set("#bigCurvePath", { strokeDasharray: bigLen, strokeDashoffset: bigLen });
+      gsap.set(".kd", { scale: 0, transformOrigin: "50% 50%" });
+      tl.to("#bigCurvePath", { strokeDashoffset: 0, duration: 0.4, ease: "power2.inOut" }, b(6, 3));
+      tl.to(".kd", { scale: 1, duration: 0.15, ease: "back.out(3)", stagger: 0.25 }, b(6, 3));
+
+      // ---- Bar 7-8: 02 VIDEO EDITING
+      hide("#slams", b(7));
+      show("#s02", b(7));
+      tl.fromTo("#s02 .head", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power4.out" }, b(7));
+      gsap.set(["#clip1", "#clip2", "#clip3"], { opacity: 0 });
+      [["#clip1", 1, -1], ["#clip2", 2, 1], ["#clip3", 3, -1]].forEach(([id, bt, dir]) => {
+        tl.fromTo(id, { opacity: 1, x: dir * 260 }, { x: 0, duration: 0.18, ease: "power4.in", immediateRender: false }, b(7, bt) - 0.18);
+        tl.fromTo(id, { scaleY: 1.3 }, { scaleY: 1, duration: 0.2, ease: "back.out(3)" }, b(7, bt));
+      });
+      gsap.set("#playhead", { x: 0 });
+      tl.to("#playhead", { x: 520, duration: 0.6, ease: "power1.inOut" }, b(8));
+      [1, 2, 3, 4, 5].forEach((k, i) => {
+        const t = b(8, 1 + i / 2);
+        tl.set("#shot" + k, { opacity: 1 }, t);
+        if (k > 1) tl.set("#shot" + (k - 1), { opacity: 0 }, t);
+        else tl.set("#shot0", { opacity: 0 }, t);
+        tl.set("#playhead", { x: 520 + 150 * k }, t);
+        tl.set("#monitor", { scale: 1.03 }, t);
+        tl.to("#monitor", { scale: 1, duration: 0.18, ease: "power3.out" }, t + 0.01);
+      });
+
+      // ---- Bar 9: 03 SMOOTH TRANSITIONS & VISUAL EFFECTS (columns return behind)
+      hide("#s02", b(9));
+      tl.set(["#chrome"], { opacity: 0.35 }, b(9));
+      show("#s03", b(9));
+      tl.fromTo("#s03 .head", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power4.out" }, b(9));
+      gsap.set(["#wipe1", "#wipe2"], { clipPath: "inset(0 0 0 100%)" });
+      gsap.set("#wipe2", { clipPath: "inset(0 100% 0 0)" });
+      tl.to("#wipe1", { clipPath: "inset(0 0 0 0%)", duration: 0.3, ease: "power4.inOut" }, b(9, 1) - 0.15);
+      tl.to("#wipe2", { clipPath: "inset(0 0% 0 0)", duration: 0.3, ease: "power4.inOut" }, b(9, 2) - 0.15);
+      gsap.set("#zoomDisc", { scale: 0 });
+      tl.to("#zoomDisc", { scale: 1, duration: 0.25, ease: "back.out(2)" }, b(9, 2.5));
+      tl.to("#zoomDisc", { scale: 14, duration: 0.3, ease: "power4.in" }, b(9, 3) - 0.3);
+      tl.fromTo("#wipe2", { scale: 1 }, { scale: 2.4, duration: 0.3, ease: "power4.in" }, b(9, 3) - 0.3);
+
+      // ---- Bar 10: THE PEAK, tile grid flips colour every half-beat, 0.2 s burst
+      hide(["#s03", "#world"], b(10));
+      show("#gridSec", b(10));
+      const rowsEls = $$("#grid .grow");
+      const pills = $$("#grid .pill");
+      const PAL = [
+        ["#a24d38", "#f8ecdb", "#0d1b18"],
+        ["#f8ecdb", "#0d1b18", "#a24d38"],
+        ["#13241f", "#f8ecdb", "#0d1b18"],
+      ];
+      for (let k = 0; k < 6; k++) {
+        const t = b(10, k / 2);
+        const [bg, fg, ground] = PAL[k % 3];
+        tl.set(pills, { backgroundColor: (i) => ((i + k) % 2 ? bg : "transparent"), color: (i) => ((i + k) % 2 ? (bg === "#f8ecdb" ? "#0d1b18" : fg) : fg), border: (i) => ((i + k) % 2 ? "none" : `2px solid ${fg}`) }, t);
+        tl.set("#grid", { backgroundColor: ground }, t);
+        rowsEls.forEach((r, i) => tl.to(r, { x: (i % 2 ? -1 : 1) * 140 * (k + 1), duration: 0.18, ease: "power4.out" }, t));
+      }
+      tl.fromTo("#leak", { x: 0, opacity: 0 }, { x: 2200, opacity: 1, duration: 2.2, ease: "none" }, b(10));
+      for (let i = 0; i < 3; i++) {
+        const t = b(10, 3) + 0.2 * i;
+        tl.set("#flash", { opacity: 0.9 }, t);
+        tl.set("#flash", { opacity: 0 }, t + 0.06);
+        tl.set("#grid", { backgroundColor: ["#a24d38", "#f8ecdb", "#0d1b18"][i] }, t);
+        rowsEls.forEach((r, j) => tl.set(r, { x: (j % 2 ? -1 : 1) * (900 + 120 * i) }, t));
+      }
+
+      // ---- Bar 11: PACKAGES lock in on the beats
+      hide("#gridSec", b(11));
+      show("#pk", b(11));
+      tl.fromTo("#pk .head", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power4.out" }, b(11));
+      [["#card1", 0, 15, "#tc1"], ["#card2", 1, 30, "#tc2"], ["#card3", 2, 60, "#tc3"]].forEach(([id, bt, secs, tc]) => {
+        const t = b(11, bt);
+        gsap.set(id, { opacity: 0 });
+        tl.fromTo(id, { opacity: 1, y: -160 }, { y: 0, duration: 0.16, ease: "power4.in", immediateRender: false }, t - 0.16);
+        tl.to(id, { scaleY: 0.96, scaleX: 1.02, duration: 0.06, yoyo: true, repeat: 1, transformOrigin: "50% 100%" }, t);
+        const cnt = { v: 0 };
+        const tcEl = $(tc);
+        tl.to(cnt, { v: secs, duration: 0.25, ease: "power2.out", onUpdate: () => { const v = Math.round(cnt.v); tcEl.textContent = `00:${pad(v / 60)}:${pad(v % 60)}`; } }, t);
+      });
+      tl.fromTo("#pk .head .num", { scale: 1.08 }, { scale: 1, duration: 0.3 }, b(11, 3));
+
+      // ---- Bar 12: THE PAUSE
+      hide("#pk", b(12));
+      show("#pause", b(12));
+      tl.to("#cursor", { opacity: 0, duration: 0.3, repeat: 7, yoyo: true, ease: "steps(1)" }, b(12));
+
+      // ---- Bar 13-14: FINALE LOCKUP = the thumbnail
+      hide("#pause", b(13));
+      show(["#world", "#title", "#disc", "#rings", "#ellipses"], b(13));
+      tl.set("#chrome", { opacity: 1 }, b(13));
+      tl.set(chs, { x: 0, y: 0, rotation: 0, opacity: 1 }, b(13));
+      tl.set(["#disc", ".ring"], { scale: 1 }, b(13));
+      tl.set("#colC", { scaleY: 1, xPercent: 0 }, b(13));
+      tl.fromTo("#world", { scale: 1.12 }, { scale: 1, duration: 0.9, ease: "expo.out" }, b(13));
+      tl.fromTo(".ring", { scale: 1 }, { scale: 1.25, opacity: 0.25, duration: 2.2, ease: "power2.out", stagger: 0.1 }, b(13));
+      tl.fromTo("#cTL", { x: -40 }, { x: 0, duration: 0.3, ease: "back.out(2)" }, b(13, 1));
+      tl.fromTo("#pkgSmall", { opacity: 0 }, { opacity: 1, duration: 0.05 }, b(13, 2));
+      tl.fromTo("#bezPath", { strokeDashoffset: bezLen }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, b(13, 1));
+      tl.to("#disc", { scale: 1.07, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out" }, b(14));
+      tl.fromTo(".ring", { scale: 1 }, { scale: 1.3, opacity: 0, duration: 1.4, ease: "power2.out", stagger: 0.12, immediateRender: false }, b(14));
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

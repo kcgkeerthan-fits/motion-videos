@@ -1,1 +1,4 @@
 renders/*.wav
+renders/.*-transaction-*/
+renders/work-*/
+snapshots/
