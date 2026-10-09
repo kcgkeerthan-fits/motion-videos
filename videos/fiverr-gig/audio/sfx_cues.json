@@ -185,17 +185,14 @@
   },
   {
    "t": 2.4,
-   "fx": "sweep",
-   "gain_db": -9,
+   "fx": "knock",
+   "gain_db": -8,
    "label": "terracotta block SLAMS in",
    "bus": "sfx",
    "args": {
-    "dur": 0.5,
-    "pan_from": 0,
-    "pan_to": 0,
+    "freq": 110,
     "seed": 13
-   },
-   "peak": true
+   }
   },
   {
    "t": 2.4,
@@ -210,45 +207,39 @@
   },
   {
    "t": 3.0,
-   "fx": "sweep",
-   "gain_db": -15,
+   "fx": "felt",
+   "gain_db": -16,
    "label": "block shifts 1",
    "bus": "sfx",
    "args": {
-    "dur": 0.4,
-    "pan_from": 0.6,
-    "pan_to": -0.6,
-    "seed": 15
-   },
-   "peak": true
+    "freq": 120,
+    "seed": 15,
+    "pan": -0.6
+   }
   },
   {
    "t": 3.6,
-   "fx": "sweep",
-   "gain_db": -15,
+   "fx": "felt",
+   "gain_db": -16,
    "label": "block shifts 2",
    "bus": "sfx",
    "args": {
-    "dur": 0.4,
-    "pan_from": -0.6,
-    "pan_to": 0.6,
-    "seed": 16
-   },
-   "peak": true
+    "freq": 120,
+    "seed": 16,
+    "pan": 0.6
+   }
   },
   {
    "t": 4.2,
-   "fx": "sweep",
-   "gain_db": -15,
+   "fx": "felt",
+   "gain_db": -16,
    "label": "block shifts 3",
    "bus": "sfx",
    "args": {
-    "dur": 0.4,
-    "pan_from": 0.3,
-    "pan_to": -0.3,
-    "seed": 17
-   },
-   "peak": true
+    "freq": 120,
+    "seed": 17,
+    "pan": -0.3
+   }
   },
   {
    "t": 3.0,
@@ -367,17 +358,14 @@
   },
   {
    "t": 7.2,
-   "fx": "sweep",
-   "gain_db": -14,
+   "fx": "paper",
+   "gain_db": -16,
    "label": "italic 'ideas' glides in",
    "bus": "sfx",
    "args": {
-    "dur": 0.45,
-    "pan_from": -0.6,
-    "pan_to": 0.6,
+    "dur": 0.3,
     "seed": 25
-   },
-   "peak": true
+   }
   },
   {
    "t": 7.8,
@@ -414,17 +402,14 @@
   },
   {
    "t": 9.0,
-   "fx": "whoosh",
-   "gain_db": -10,
+   "fx": "knock",
+   "gain_db": -11,
    "label": "title SCATTERS into letters",
    "bus": "sfx",
    "args": {
-    "dur": 0.6,
-    "seed": 28,
-    "pan_from": 0,
-    "pan_to": 0
-   },
-   "peak": true
+    "freq": 262,
+    "seed": 28
+   }
   },
   {
    "t": 9.03,
@@ -524,15 +509,14 @@
   },
   {
    "t": 9.6,
-   "fx": "sweep",
+   "fx": "knock",
    "gain_db": -9,
    "label": "SECTION 01",
    "bus": "sfx",
    "args": {
-    "dur": 0.6,
+    "freq": 147,
     "seed": 40
-   },
-   "peak": true
+   }
   },
   {
    "t": 9.6,
@@ -585,22 +569,8 @@
   },
   {
    "t": 12.0,
-   "fx": "sweep",
-   "gain_db": -10,
-   "label": "colour panel slam 1",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.35,
-    "pan_from": -0.8,
-    "pan_to": 0.8,
-    "seed": 46
-   },
-   "peak": true
-  },
-  {
-   "t": 12.0,
    "fx": "felt",
-   "gain_db": -14,
+   "gain_db": -10,
    "label": "panel lands 1",
    "bus": "sfx",
    "args": {
@@ -610,22 +580,8 @@
   },
   {
    "t": 12.6,
-   "fx": "sweep",
-   "gain_db": -12,
-   "label": "colour panel slam 2",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.35,
-    "pan_from": 0.8,
-    "pan_to": -0.8,
-    "seed": 47
-   },
-   "peak": true
-  },
-  {
-   "t": 12.6,
    "fx": "felt",
-   "gain_db": -14,
+   "gain_db": -10,
    "label": "panel lands 2",
    "bus": "sfx",
    "args": {
@@ -635,22 +591,8 @@
   },
   {
    "t": 12.9,
-   "fx": "sweep",
-   "gain_db": -12,
-   "label": "colour panel slam 3",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.35,
-    "pan_from": -0.8,
-    "pan_to": 0.8,
-    "seed": 48
-   },
-   "peak": true
-  },
-  {
-   "t": 12.9,
    "fx": "felt",
-   "gain_db": -14,
+   "gain_db": -10,
    "label": "panel lands 3",
    "bus": "sfx",
    "args": {
@@ -660,22 +602,8 @@
   },
   {
    "t": 13.2,
-   "fx": "sweep",
-   "gain_db": -12,
-   "label": "colour panel slam 4",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.35,
-    "pan_from": 0.8,
-    "pan_to": -0.8,
-    "seed": 49
-   },
-   "peak": true
-  },
-  {
-   "t": 13.2,
    "fx": "felt",
-   "gain_db": -14,
+   "gain_db": -10,
    "label": "panel lands 4",
    "bus": "sfx",
    "args": {
@@ -720,17 +648,14 @@
   },
   {
    "t": 14.4,
-   "fx": "sweep",
+   "fx": "knock",
    "gain_db": -9,
    "label": "SECTION 02",
    "bus": "sfx",
    "args": {
-    "dur": 0.6,
-    "pan_from": 0.9,
-    "pan_to": -0.9,
+    "freq": 147,
     "seed": 60
-   },
-   "peak": true
+   }
   },
   {
    "t": 14.4,
@@ -856,15 +781,14 @@
   },
   {
    "t": 19.2,
-   "fx": "whoosh",
-   "gain_db": -8,
+   "fx": "knock",
+   "gain_db": -9,
    "label": "SECTION 03",
    "bus": "sfx",
    "args": {
-    "dur": 0.6,
+    "freq": 147,
     "seed": 80
-   },
-   "peak": true
+   }
   },
   {
    "t": 19.2,
@@ -881,31 +805,27 @@
   },
   {
    "t": 19.8,
-   "fx": "sweep",
-   "gain_db": -11,
+   "fx": "paper",
+   "gain_db": -14,
    "label": "panel wipe right-to-left",
    "bus": "sfx",
    "args": {
-    "dur": 0.45,
-    "pan_from": 0.8,
-    "pan_to": -0.8,
-    "seed": 82
-   },
-   "peak": true
+    "dur": 0.35,
+    "seed": 82,
+    "pan": 0.4
+   }
   },
   {
    "t": 20.4,
-   "fx": "sweep",
-   "gain_db": -11,
+   "fx": "paper",
+   "gain_db": -14,
    "label": "panel wipe left-to-right",
    "bus": "sfx",
    "args": {
-    "dur": 0.45,
-    "pan_from": -0.8,
-    "pan_to": 0.8,
-    "seed": 83
-   },
-   "peak": true
+    "dur": 0.35,
+    "seed": 83,
+    "pan": -0.4
+   }
   },
   {
    "t": 21.0,
@@ -958,20 +878,6 @@
    }
   },
   {
-   "t": 21.6,
-   "fx": "sweep",
-   "gain_db": -12,
-   "label": "grid slides 1",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.3,
-    "pan_from": -0.6,
-    "pan_to": 0.6,
-    "seed": 100
-   },
-   "peak": true
-  },
-  {
    "t": 21.9,
    "fx": "snap",
    "gain_db": -10,
@@ -994,20 +900,6 @@
    }
   },
   {
-   "t": 22.2,
-   "fx": "sweep",
-   "gain_db": -12,
-   "label": "grid slides 2",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.3,
-    "pan_from": -0.6,
-    "pan_to": 0.6,
-    "seed": 102
-   },
-   "peak": true
-  },
-  {
    "t": 22.5,
    "fx": "snap",
    "gain_db": -10,
@@ -1028,20 +920,6 @@
     "seed": 94,
     "pan": -0.5
    }
-  },
-  {
-   "t": 22.8,
-   "fx": "sweep",
-   "gain_db": -12,
-   "label": "grid slides 3",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.3,
-    "pan_from": -0.6,
-    "pan_to": 0.6,
-    "seed": 104
-   },
-   "peak": true
   },
   {
    "t": 23.1,

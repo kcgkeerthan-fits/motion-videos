@@ -13,13 +13,13 @@
 | 1.800 | pencil | -15 | start | sfx | ruler ticks run down the edge |
 | 2.100 | tick | -26 | start | sfx | timecode tick |
 | 2.400 | tick | -26 | start | sfx | timecode tick |
-| 2.400 | sweep | -9 | peak | sfx | terracotta block SLAMS in |
+| 2.400 | knock | -8 | start | sfx | terracotta block SLAMS in |
 | 2.400 | felt | -10 | start | sfx | block lands |
-| 3.000 | sweep | -15 | peak | sfx | block shifts 1 |
+| 3.000 | felt | -16 | start | sfx | block shifts 1 |
 | 3.000 | pencil | -16 | start | sfx | bezier curve draws |
-| 3.600 | sweep | -15 | peak | sfx | block shifts 2 |
+| 3.600 | felt | -16 | start | sfx | block shifts 2 |
 | 3.600 | felt | -13 | start | sfx | play disc lands |
-| 4.200 | sweep | -15 | peak | sfx | block shifts 3 |
+| 4.200 | felt | -16 | start | sfx | block shifts 3 |
 | 4.200 | pencil | -18 | start | sfx | play triangle draws |
 | 4.800 | press | -6 | start | sfx | PLAY pressed |
 | 4.800 | ripple | -13 | start | sfx | rings spread |
@@ -33,14 +33,14 @@
 | 6.600 | paper | -18 | start | sfx | italic 'that' |
 | 6.600 | pulse | -11 | start | bed | bar 3 beat 4 pulse |
 | 6.900 | paper | -18 | start | sfx | italic 'bring' |
-| 7.200 | sweep | -14 | peak | sfx | italic 'ideas' glides in |
+| 7.200 | paper | -16 | start | sfx | italic 'ideas' glides in |
 | 7.200 | pulse | -6 | start | bed | bar 4 beat 1 pulse |
 | 7.800 | felt | -15 | start | sfx | 'to' |
 | 7.800 | pulse | -11 | start | bed | bar 4 beat 2 pulse |
 | 8.400 | knock | -7 | start | sfx | 'life' lands |
 | 8.400 | shimmer | -20 | start | sfx | glow on 'life' |
 | 8.400 | pulse | -11 | start | bed | bar 4 beat 3 pulse |
-| 9.000 | whoosh | -10 | peak | sfx | title SCATTERS into letters |
+| 9.000 | knock | -11 | start | sfx | title SCATTERS into letters |
 | 9.000 | pulse | -11 | start | bed | bar 4 beat 4 pulse |
 | 9.030 | tick | -20 | start | sfx | letter 1 flies |
 | 9.080 | tick | -21 | start | sfx | letter 2 flies |
@@ -50,7 +50,7 @@
 | 9.280 | tick | -22 | start | sfx | letter 6 flies |
 | 9.330 | tick | -20 | start | sfx | letter 7 flies |
 | 9.380 | tick | -21 | start | sfx | letter 8 flies |
-| 9.600 | sweep | -9 | peak | sfx | SECTION 01 |
+| 9.600 | knock | -9 | start | sfx | SECTION 01 |
 | 9.600 | scrub | -22 | start | sfx | label types on |
 | 9.600 | pulse | -6 | start | bed | bar 5 beat 1 pulse |
 | 10.200 | felt | -10 | start | sfx | ellipse bounce 1 |
@@ -59,22 +59,18 @@
 | 10.800 | pulse | -11 | start | bed | bar 5 beat 3 pulse |
 | 11.400 | felt | -14 | start | sfx | ellipse bounce 3 |
 | 11.400 | pulse | -11 | start | bed | bar 5 beat 4 pulse |
-| 12.000 | sweep | -10 | peak | sfx | colour panel slam 1 |
-| 12.000 | felt | -14 | start | sfx | panel lands 1 |
+| 12.000 | felt | -10 | start | sfx | panel lands 1 |
 | 12.000 | pulse | -6 | start | bed | bar 6 beat 1 pulse |
-| 12.600 | sweep | -12 | peak | sfx | colour panel slam 2 |
-| 12.600 | felt | -14 | start | sfx | panel lands 2 |
+| 12.600 | felt | -10 | start | sfx | panel lands 2 |
 | 12.600 | pulse | -11 | start | bed | bar 6 beat 2 pulse |
-| 12.900 | sweep | -12 | peak | sfx | colour panel slam 3 |
-| 12.900 | felt | -14 | start | sfx | panel lands 3 |
-| 13.200 | sweep | -12 | peak | sfx | colour panel slam 4 |
-| 13.200 | felt | -14 | start | sfx | panel lands 4 |
+| 12.900 | felt | -10 | start | sfx | panel lands 3 |
+| 13.200 | felt | -10 | start | sfx | panel lands 4 |
 | 13.200 | pulse | -11 | start | bed | bar 6 beat 3 pulse |
 | 13.500 | swell | -14 | end | sfx | shape morphs |
 | 13.800 | pencil | -15 | start | sfx | bezier handle snaps the curve |
 | 13.800 | tick | -21 | start | sfx | keyframe diamonds |
 | 13.800 | pulse | -11 | start | bed | bar 6 beat 4 pulse |
-| 14.400 | sweep | -9 | peak | sfx | SECTION 02 |
+| 14.400 | knock | -9 | start | sfx | SECTION 02 |
 | 14.400 | shutter | -13 | start | sfx | frame flash |
 | 14.400 | scrub | -22 | start | sfx | label types on |
 | 14.400 | pulse | -6 | start | bed | bar 7 beat 1 pulse |
@@ -94,27 +90,24 @@
 | 18.300 | shutter | -8.5 | start | sfx | cut 4 |
 | 18.600 | shutter | -8.0 | start | sfx | cut 5 |
 | 18.600 | pulse | -11 | start | bed | bar 8 beat 4 pulse |
-| 19.200 | whoosh | -8 | peak | sfx | SECTION 03 |
+| 19.200 | knock | -9 | start | sfx | SECTION 03 |
 | 19.200 | scrub | -22 | start | sfx | label types on |
 | 19.200 | pulse | -6 | start | bed | bar 9 beat 1 pulse |
-| 19.800 | sweep | -11 | peak | sfx | panel wipe right-to-left |
+| 19.800 | paper | -14 | start | sfx | panel wipe right-to-left |
 | 19.800 | pulse | -11 | start | bed | bar 9 beat 2 pulse |
-| 20.400 | sweep | -11 | peak | sfx | panel wipe left-to-right |
+| 20.400 | paper | -14 | start | sfx | panel wipe left-to-right |
 | 20.400 | pulse | -11 | start | bed | bar 9 beat 3 pulse |
 | 21.000 | riser | -14 | end | sfx | into the zoom-through |
 | 21.000 | whoosh | -8 | peak | sfx | zoom-through |
 | 21.000 | pulse | -11 | start | bed | bar 9 beat 4 pulse |
 | 21.600 | shimmer | -19 | start | sfx | light leak over the grid |
 | 21.600 | snap | -7 | start | sfx | grid flips colour 1 |
-| 21.600 | sweep | -12 | peak | sfx | grid slides 1 |
 | 21.600 | pulse | -6 | start | bed | bar 10 beat 1 pulse |
 | 21.900 | snap | -10 | start | sfx | grid flips colour 2 |
 | 22.200 | snap | -7 | start | sfx | grid flips colour 3 |
-| 22.200 | sweep | -12 | peak | sfx | grid slides 2 |
 | 22.200 | pulse | -11 | start | bed | bar 10 beat 2 pulse |
 | 22.500 | snap | -10 | start | sfx | grid flips colour 4 |
 | 22.800 | snap | -7 | start | sfx | grid flips colour 5 |
-| 22.800 | sweep | -12 | peak | sfx | grid slides 3 |
 | 22.800 | pulse | -11 | start | bed | bar 10 beat 3 pulse |
 | 23.100 | snap | -10 | start | sfx | grid flips colour 6 |
 | 23.400 | shutter | -8 | start | sfx | burst 1 |
