@@ -1,0 +1,5 @@
+# machine-local files written by scripts/setup.sh and Python
+.python
+.acestep
+.venv/
+__pycache__/
