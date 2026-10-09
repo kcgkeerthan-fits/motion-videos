@@ -1,48 +1,60 @@
 {
- "duration": 32.0,
+ "duration": 34.8,
  "room_env": [
   [
    0,
    0.9
   ],
   [
-   4.9,
-   0.6
+   2.3,
+   0.5
   ],
   [
-   6.25,
-   0.2
-  ],
-  [
-   27.4,
+   4.8,
    0.15
   ],
   [
-   29,
-   0.4
+   26.3,
+   0.15
   ],
   [
-   32,
-   0.4
+   26.6,
+   0.9
+  ],
+  [
+   28.6,
+   0.6
+  ],
+  [
+   28.8,
+   0.1
+  ],
+  [
+   31,
+   0.35
+  ],
+  [
+   34.8,
+   0.35
   ]
  ],
  "cues": [
   {
-   "t": 0.625,
+   "t": 0.3,
    "fx": "spinup",
    "gain_db": -10,
-   "label": "tape spins up as the frame wakes",
+   "label": "tape spins up",
    "bus": "sfx",
    "args": {
-    "dur": 0.6
+    "dur": 0.5
    },
    "align": "end"
   },
   {
-   "t": 0.625,
+   "t": 0.3,
    "fx": "tick",
-   "gain_db": -20,
-   "label": "REC dot blinks on",
+   "gain_db": -19,
+   "label": "REC dot on",
    "bus": "sfx",
    "args": {
     "freq": 2200,
@@ -50,22 +62,10 @@
    }
   },
   {
-   "t": 1.25,
+   "t": 0.6,
    "fx": "tick",
-   "gain_db": -25,
-   "label": "timecode ticks",
-   "bus": "sfx",
-   "args": {
-    "freq": 3100,
-    "seed": 2,
-    "pan": -0.6
-   }
-  },
-  {
-   "t": 1.875,
-   "fx": "tick",
-   "gain_db": -25,
-   "label": "timecode ticks",
+   "gain_db": -26,
+   "label": "timecode tick",
    "bus": "sfx",
    "args": {
     "freq": 3100,
@@ -74,690 +74,1289 @@
    }
   },
   {
-   "t": 1.25,
-   "fx": "pencil",
-   "gain_db": -15,
-   "label": "dashed circle draws (top-left)",
+   "t": 0.9,
+   "fx": "tick",
+   "gain_db": -26,
+   "label": "timecode tick",
    "bus": "sfx",
    "args": {
-    "dur": 0.9,
+    "freq": 3100,
+    "seed": 4,
+    "pan": -0.6
+   }
+  },
+  {
+   "t": 1.2,
+   "fx": "tick",
+   "gain_db": -26,
+   "label": "timecode tick",
+   "bus": "sfx",
+   "args": {
+    "freq": 3100,
+    "seed": 5,
+    "pan": -0.6
+   }
+  },
+  {
+   "t": 1.5,
+   "fx": "tick",
+   "gain_db": -26,
+   "label": "timecode tick",
+   "bus": "sfx",
+   "args": {
+    "freq": 3100,
+    "seed": 6,
+    "pan": -0.6
+   }
+  },
+  {
+   "t": 1.8,
+   "fx": "tick",
+   "gain_db": -26,
+   "label": "timecode tick",
+   "bus": "sfx",
+   "args": {
+    "freq": 3100,
+    "seed": 7,
+    "pan": -0.6
+   }
+  },
+  {
+   "t": 2.1,
+   "fx": "tick",
+   "gain_db": -26,
+   "label": "timecode tick",
+   "bus": "sfx",
+   "args": {
+    "freq": 3100,
+    "seed": 8,
+    "pan": -0.6
+   }
+  },
+  {
+   "t": 2.4,
+   "fx": "tick",
+   "gain_db": -26,
+   "label": "timecode tick",
+   "bus": "sfx",
+   "args": {
+    "freq": 3100,
+    "seed": 9,
+    "pan": -0.6
+   }
+  },
+  {
+   "t": 0.6,
+   "fx": "pencil",
+   "gain_db": -15,
+   "label": "dashed circle draws",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.5,
     "seed": 3,
     "pan_from": -0.7,
     "pan_to": -0.4
    }
   },
   {
-   "t": 1.875,
+   "t": 1.2,
    "fx": "tick",
-   "gain_db": -23,
-   "label": "crosshair marks appear",
+   "gain_db": -21,
+   "label": "crosshairs snap on",
    "bus": "sfx",
    "args": {
     "freq": 2600,
-    "seed": 5,
+    "seed": 11,
     "pan": 0.5
    }
   },
   {
-   "t": 2.5,
+   "t": 1.8,
    "fx": "pencil",
-   "gain_db": -14,
-   "label": "bezier curve draws (bottom-right)",
+   "gain_db": -15,
+   "label": "ruler ticks run down the edge",
    "bus": "sfx",
    "args": {
-    "dur": 1.2,
-    "seed": 4,
-    "pan_from": 0.2,
+    "dur": 0.5,
+    "seed": 12,
+    "pan_from": -0.9,
+    "pan_to": -0.9
+   }
+  },
+  {
+   "t": 2.4,
+   "fx": "sweep",
+   "gain_db": -9,
+   "label": "terracotta block SLAMS in",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.5,
+    "pan_from": 0,
+    "pan_to": 0,
+    "seed": 13
+   },
+   "peak": true
+  },
+  {
+   "t": 2.4,
+   "fx": "felt",
+   "gain_db": -10,
+   "label": "block lands",
+   "bus": "sfx",
+   "args": {
+    "freq": 92,
+    "seed": 14
+   }
+  },
+  {
+   "t": 3.0,
+   "fx": "sweep",
+   "gain_db": -15,
+   "label": "block shifts 1",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.4,
+    "pan_from": 0.6,
+    "pan_to": -0.6,
+    "seed": 15
+   },
+   "peak": true
+  },
+  {
+   "t": 3.6,
+   "fx": "sweep",
+   "gain_db": -15,
+   "label": "block shifts 2",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.4,
+    "pan_from": -0.6,
+    "pan_to": 0.6,
+    "seed": 16
+   },
+   "peak": true
+  },
+  {
+   "t": 4.2,
+   "fx": "sweep",
+   "gain_db": -15,
+   "label": "block shifts 3",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.4,
+    "pan_from": 0.3,
+    "pan_to": -0.3,
+    "seed": 17
+   },
+   "peak": true
+  },
+  {
+   "t": 3.0,
+   "fx": "pencil",
+   "gain_db": -16,
+   "label": "bezier curve draws",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.5,
+    "seed": 18,
+    "pan_from": 0.3,
     "pan_to": 0.8
    }
   },
   {
-   "t": 3.75,
+   "t": 3.6,
    "fx": "felt",
-   "gain_db": -15,
-   "label": "play button disc lands centre",
+   "gain_db": -13,
+   "label": "play disc lands",
    "bus": "sfx",
    "args": {
     "freq": 98,
-    "seed": 6
+    "seed": 19
    }
   },
   {
-   "t": 4.375,
+   "t": 4.2,
    "fx": "pencil",
-   "gain_db": -17,
+   "gain_db": -18,
    "label": "play triangle draws",
    "bus": "sfx",
    "args": {
-    "dur": 0.4,
-    "seed": 7,
-    "pan_from": -0.1,
-    "pan_to": 0.1
+    "dur": 0.3,
+    "seed": 20
    }
   },
   {
-   "t": 5.0,
+   "t": 4.8,
    "fx": "press",
    "gain_db": -6,
-   "label": "PLAY is pressed",
+   "label": "PLAY pressed",
    "bus": "sfx"
   },
   {
-   "t": 5.0,
+   "t": 4.8,
    "fx": "ripple",
-   "gain_db": -12,
-   "label": "rings spread from the button",
+   "gain_db": -13,
+   "label": "rings spread",
    "bus": "sfx",
    "args": {
     "base": 196
    }
   },
   {
-   "t": 5.625,
-   "fx": "sweep",
-   "gain_db": -10,
-   "label": "terracotta column wipes open",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.8,
-    "pan_from": 0,
-    "pan_to": 0,
-    "seed": 8
-   },
-   "peak": true
-  },
-  {
-   "t": 6.25,
-   "fx": "swell",
-   "gain_db": -12,
-   "label": "into 'Motion'",
-   "bus": "sfx",
-   "args": {
-    "dur": 1.0,
-    "freq": 98
-   },
-   "align": "end"
-  },
-  {
-   "t": 6.25,
+   "t": 5.4,
    "fx": "knock",
-   "gain_db": -7,
-   "label": "'Motion' stamps in",
+   "gain_db": -8,
+   "label": "'Motion'",
    "bus": "sfx",
    "args": {
     "freq": 196,
-    "seed": 9,
+    "seed": 21,
     "pan": -0.2
    }
   },
   {
-   "t": 6.875,
+   "t": 6.0,
    "fx": "knock",
    "gain_db": -6,
-   "label": "'Graphics' stamps in",
+   "label": "'Graphics'",
    "bus": "sfx",
    "args": {
     "freq": 220,
-    "seed": 10,
+    "seed": 22,
     "pan": 0.2
    }
   },
   {
-   "t": 6.875,
+   "t": 6.0,
    "fx": "impact",
-   "gain_db": -11,
+   "gain_db": -14,
    "label": "title weight",
    "bus": "sfx",
    "args": {
-    "dur": 1.6
+    "dur": 1.4
    }
   },
   {
-   "t": 6.875,
+   "t": 6.0,
    "fx": "subdrop",
-   "gain_db": -13,
+   "gain_db": -14,
    "label": "title weight (sub)",
    "bus": "sfx"
   },
   {
-   "t": 7.5,
-   "fx": "sweep",
-   "gain_db": -15,
-   "label": "italic 'that bring ideas' glides in",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.7,
-    "pan_from": -0.6,
-    "pan_to": 0.6,
-    "seed": 11
-   },
-   "peak": true
-  },
-  {
-   "t": 8.125,
+   "t": 6.6,
    "fx": "paper",
-   "gain_db": -19,
-   "label": "italic settles",
+   "gain_db": -18,
+   "label": "italic 'that'",
    "bus": "sfx",
    "args": {
-    "dur": 0.3,
-    "seed": 12
-   }
-  },
-  {
-   "t": 8.75,
-   "fx": "knock",
-   "gain_db": -8,
-   "label": "'to life' lands",
-   "bus": "sfx",
-   "args": {
-    "freq": 247,
-    "seed": 13
-   }
-  },
-  {
-   "t": 8.75,
-   "fx": "shimmer",
-   "gain_db": -19,
-   "label": "warm glow on 'to life'",
-   "bus": "sfx",
-   "args": {
-    "dur": 2.2,
-    "base": 587
-   }
-  },
-  {
-   "t": 9.375,
-   "fx": "felt",
-   "gain_db": -14,
-   "label": "leaning ellipse 1 falls into place",
-   "bus": "sfx",
-   "args": {
-    "freq": 130,
-    "seed": 14,
-    "pan": -0.3
-   }
-  },
-  {
-   "t": 9.5312,
-   "fx": "felt",
-   "gain_db": -15,
-   "label": "leaning ellipse 2 falls into place",
-   "bus": "sfx",
-   "args": {
-    "freq": 116,
-    "seed": 15,
-    "pan": 0.0
-   }
-  },
-  {
-   "t": 9.6875,
-   "fx": "felt",
-   "gain_db": -16,
-   "label": "leaning ellipse 3 falls into place",
-   "bus": "sfx",
-   "args": {
-    "freq": 103,
-    "seed": 16,
-    "pan": 0.3
-   }
-  },
-  {
-   "t": 10.0,
-   "fx": "sweep",
-   "gain_db": -9,
-   "label": "SECTION 01 transition",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.9,
-    "seed": 20
-   },
-   "peak": true
-  },
-  {
-   "t": 10.0,
-   "fx": "scrub",
-   "gain_db": -22,
-   "label": "label types on: MOTION GRAPHICS & ANIMATION",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.5,
-    "rate0": 26,
-    "rate1": 30,
-    "seed": 21
-   }
-  },
-  {
-   "t": 10.625,
-   "fx": "felt",
-   "gain_db": -10,
-   "label": "ellipse bounce 1 (squash)",
-   "bus": "sfx",
-   "args": {
-    "freq": 110,
-    "seed": 22
-   }
-  },
-  {
-   "t": 11.25,
-   "fx": "felt",
-   "gain_db": -13,
-   "label": "ellipse bounce 2 (squash)",
-   "bus": "sfx",
-   "args": {
-    "freq": 104,
+    "dur": 0.2,
     "seed": 23
    }
   },
   {
-   "t": 11.875,
-   "fx": "felt",
-   "gain_db": -16,
-   "label": "ellipse bounce 3 (squash)",
+   "t": 6.9,
+   "fx": "paper",
+   "gain_db": -18,
+   "label": "italic 'bring'",
    "bus": "sfx",
    "args": {
-    "freq": 98,
+    "dur": 0.2,
     "seed": 24
    }
   },
   {
-   "t": 12.5,
-   "fx": "pencil",
-   "gain_db": -15,
-   "label": "bezier handle dragged, curve redraws",
+   "t": 7.2,
+   "fx": "sweep",
+   "gain_db": -14,
+   "label": "italic 'ideas' glides in",
    "bus": "sfx",
    "args": {
-    "dur": 0.8,
+    "dur": 0.45,
+    "pan_from": -0.6,
+    "pan_to": 0.6,
     "seed": 25
-   }
-  },
-  {
-   "t": 13.75,
-   "fx": "swell",
-   "gain_db": -13,
-   "label": "shape morphs",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.6,
-    "freq": 147
    },
-   "align": "end"
+   "peak": true
   },
   {
-   "t": 13.75,
+   "t": 7.8,
    "fx": "felt",
-   "gain_db": -10,
-   "label": "morph lands",
+   "gain_db": -15,
+   "label": "'to'",
    "bus": "sfx",
    "args": {
-    "freq": 98,
+    "freq": 130,
     "seed": 26
    }
   },
   {
-   "t": 14.375,
-   "fx": "tick",
-   "gain_db": -22,
-   "label": "keyframe diamonds blink",
+   "t": 8.4,
+   "fx": "knock",
+   "gain_db": -7,
+   "label": "'life' lands",
    "bus": "sfx",
    "args": {
-    "freq": 2900,
-    "seed": 27,
-    "pan": 0.4
+    "freq": 247,
+    "seed": 27
    }
   },
   {
-   "t": 15.0,
-   "fx": "sweep",
-   "gain_db": -9,
-   "label": "SECTION 02 transition",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.9,
-    "pan_from": 0.9,
-    "pan_to": -0.9,
-    "seed": 30
-   },
-   "peak": true
-  },
-  {
-   "t": 15.0,
-   "fx": "shutter",
-   "gain_db": -14,
-   "label": "frame flash",
-   "bus": "sfx",
-   "args": {
-    "seed": 31
-   }
-  },
-  {
-   "t": 15.0,
-   "fx": "scrub",
-   "gain_db": -22,
-   "label": "label types on: VIDEO EDITING",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.4,
-    "rate0": 26,
-    "rate1": 30,
-    "seed": 32
-   }
-  },
-  {
-   "t": 15.625,
-   "fx": "snap",
-   "gain_db": -12,
-   "label": "clip 1 snaps onto the timeline",
-   "bus": "sfx",
-   "args": {
-    "seed": 33,
-    "pan": -0.5
-   }
-  },
-  {
-   "t": 16.25,
-   "fx": "snap",
-   "gain_db": -12,
-   "label": "clip 2 snaps onto the timeline",
-   "bus": "sfx",
-   "args": {
-    "seed": 34,
-    "pan": 0.0
-   }
-  },
-  {
-   "t": 16.875,
-   "fx": "snap",
-   "gain_db": -12,
-   "label": "clip 3 snaps onto the timeline",
-   "bus": "sfx",
-   "args": {
-    "seed": 35,
-    "pan": 0.5
-   }
-  },
-  {
-   "t": 17.5,
-   "fx": "scrub",
-   "gain_db": -15,
-   "label": "playhead scrubs the timeline",
+   "t": 8.4,
+   "fx": "shimmer",
+   "gain_db": -20,
+   "label": "glow on 'life'",
    "bus": "sfx",
    "args": {
     "dur": 1.2,
-    "seed": 36
+    "base": 587
    }
   },
   {
-   "t": 18.75,
-   "fx": "shutter",
-   "gain_db": -14,
-   "label": "cut 1 (accelerating edit)",
-   "bus": "sfx",
-   "args": {
-    "seed": 37,
-    "pan": -0.4
-   }
-  },
-  {
-   "t": 19.0625,
-   "fx": "shutter",
-   "gain_db": -13,
-   "label": "cut 2 (accelerating edit)",
-   "bus": "sfx",
-   "args": {
-    "seed": 38,
-    "pan": 0.4
-   }
-  },
-  {
-   "t": 19.375,
-   "fx": "shutter",
-   "gain_db": -12,
-   "label": "cut 3 (accelerating edit)",
-   "bus": "sfx",
-   "args": {
-    "seed": 39,
-    "pan": 0
-   }
-  },
-  {
-   "t": 20.0,
+   "t": 9.0,
    "fx": "whoosh",
-   "gain_db": -8,
-   "label": "SECTION 03 transition",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.9,
-    "seed": 40
-   },
-   "peak": true
-  },
-  {
-   "t": 20.0,
-   "fx": "scrub",
-   "gain_db": -22,
-   "label": "label types on: SMOOTH TRANSITIONS & VISUAL EFFECTS",
+   "gain_db": -10,
+   "label": "title SCATTERS into letters",
    "bus": "sfx",
    "args": {
     "dur": 0.6,
-    "rate0": 26,
-    "rate1": 30,
-    "seed": 41
-   }
-  },
-  {
-   "t": 20.625,
-   "fx": "sweep",
-   "gain_db": -11,
-   "label": "panel wipe right-to-left",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.7,
-    "pan_from": 0.8,
-    "pan_to": -0.8,
-    "seed": 42
-   },
-   "peak": true
-  },
-  {
-   "t": 21.25,
-   "fx": "sweep",
-   "gain_db": -11,
-   "label": "panel wipe left-to-right",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.7,
-    "pan_from": -0.8,
-    "pan_to": 0.8,
-    "seed": 43
-   },
-   "peak": true
-  },
-  {
-   "t": 22.5,
-   "fx": "riser",
-   "gain_db": -13,
-   "label": "into the zoom-through",
-   "bus": "sfx",
-   "args": {
-    "dur": 1.2,
-    "f0": 220,
-    "f1": 1400,
-    "seed": 44
-   },
-   "align": "end"
-  },
-  {
-   "t": 22.5,
-   "fx": "whoosh",
-   "gain_db": -8,
-   "label": "zoom-through transition",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.8,
-    "seed": 45,
+    "seed": 28,
     "pan_from": 0,
     "pan_to": 0
    },
    "peak": true
   },
   {
-   "t": 23.125,
-   "fx": "shimmer",
-   "gain_db": -17,
-   "label": "light leak washes across",
+   "t": 9.03,
+   "fx": "tick",
+   "gain_db": -20,
+   "label": "letter 1 flies",
    "bus": "sfx",
    "args": {
-    "dur": 2.0,
-    "base": 440
+    "freq": 1500,
+    "seed": 30,
+    "pan": -0.9
    }
   },
   {
-   "t": 23.75,
-   "fx": "tapestop",
-   "gain_db": -12,
-   "label": "VFX time-freeze",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.6
-   }
-  },
-  {
-   "t": 25.0,
-   "fx": "spinup",
-   "gain_db": -12,
-   "label": "time restarts",
-   "bus": "sfx",
-   "args": {
-    "dur": 0.5,
-    "seed": 46
-   },
-   "align": "end"
-  },
-  {
-   "t": 25.0,
-   "fx": "scrub",
+   "t": 9.08,
+   "fx": "tick",
    "gain_db": -21,
-   "label": "timecode rolls to 00:00:15",
+   "label": "letter 2 flies",
    "bus": "sfx",
    "args": {
-    "dur": 0.55,
-    "seed": 47
+    "freq": 1730,
+    "seed": 31,
+    "pan": -0.65
    }
   },
   {
-   "t": 25.4688,
-   "fx": "knock",
-   "gain_db": -10,
-   "label": "package 15S locks in",
+   "t": 9.13,
+   "fx": "tick",
+   "gain_db": -22,
+   "label": "letter 3 flies",
    "bus": "sfx",
    "args": {
-    "freq": 196,
-    "seed": 48,
+    "freq": 1960,
+    "seed": 32,
     "pan": -0.4
    }
   },
   {
-   "t": 26.0938,
-   "fx": "knock",
-   "gain_db": -9,
-   "label": "package 30S locks in",
+   "t": 9.18,
+   "fx": "tick",
+   "gain_db": -20,
+   "label": "letter 4 flies",
    "bus": "sfx",
    "args": {
-    "freq": 233,
-    "seed": 49,
+    "freq": 2190,
+    "seed": 33,
+    "pan": -0.15000000000000002
+   }
+  },
+  {
+   "t": 9.23,
+   "fx": "tick",
+   "gain_db": -21,
+   "label": "letter 5 flies",
+   "bus": "sfx",
+   "args": {
+    "freq": 2420,
+    "seed": 34,
+    "pan": 0.09999999999999998
+   }
+  },
+  {
+   "t": 9.28,
+   "fx": "tick",
+   "gain_db": -22,
+   "label": "letter 6 flies",
+   "bus": "sfx",
+   "args": {
+    "freq": 2650,
+    "seed": 35,
+    "pan": 0.35
+   }
+  },
+  {
+   "t": 9.33,
+   "fx": "tick",
+   "gain_db": -20,
+   "label": "letter 7 flies",
+   "bus": "sfx",
+   "args": {
+    "freq": 2880,
+    "seed": 36,
+    "pan": 0.6
+   }
+  },
+  {
+   "t": 9.38,
+   "fx": "tick",
+   "gain_db": -21,
+   "label": "letter 8 flies",
+   "bus": "sfx",
+   "args": {
+    "freq": 3110,
+    "seed": 37,
+    "pan": 0.85
+   }
+  },
+  {
+   "t": 9.6,
+   "fx": "sweep",
+   "gain_db": -9,
+   "label": "SECTION 01",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.6,
+    "seed": 40
+   },
+   "peak": true
+  },
+  {
+   "t": 9.6,
+   "fx": "scrub",
+   "gain_db": -22,
+   "label": "label types on",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.35,
+    "rate0": 28,
+    "rate1": 32,
+    "seed": 41
+   }
+  },
+  {
+   "t": 10.2,
+   "fx": "felt",
+   "gain_db": -10,
+   "label": "ellipse bounce 1",
+   "bus": "sfx",
+   "args": {
+    "freq": 112,
+    "seed": 42,
+    "pan": -0.3
+   }
+  },
+  {
+   "t": 10.8,
+   "fx": "felt",
+   "gain_db": -12,
+   "label": "ellipse bounce 2",
+   "bus": "sfx",
+   "args": {
+    "freq": 105,
+    "seed": 43,
+    "pan": 0.3
+   }
+  },
+  {
+   "t": 11.4,
+   "fx": "felt",
+   "gain_db": -14,
+   "label": "ellipse bounce 3",
+   "bus": "sfx",
+   "args": {
+    "freq": 98,
+    "seed": 44,
     "pan": 0
    }
   },
   {
-   "t": 26.7188,
-   "fx": "knock",
-   "gain_db": -8,
-   "label": "package 60S locks in",
+   "t": 12.0,
+   "fx": "sweep",
+   "gain_db": -10,
+   "label": "colour panel slam 1",
    "bus": "sfx",
    "args": {
-    "freq": 294,
-    "seed": 50,
-    "pan": 0.4
-   }
+    "dur": 0.35,
+    "pan_from": -0.8,
+    "pan_to": 0.8,
+    "seed": 46
+   },
+   "peak": true
   },
   {
-   "t": 27.1875,
+   "t": 12.0,
    "fx": "felt",
-   "gain_db": -15,
-   "label": "'PACKAGES' label settles",
+   "gain_db": -14,
+   "label": "panel lands 1",
    "bus": "sfx",
    "args": {
-    "seed": 51,
-    "freq": 104
+    "freq": 98,
+    "seed": 50
    }
   },
   {
-   "t": 27.5,
-   "fx": "riser",
-   "gain_db": -11,
-   "label": "into the lockup",
+   "t": 12.6,
+   "fx": "sweep",
+   "gain_db": -12,
+   "label": "colour panel slam 2",
    "bus": "sfx",
    "args": {
-    "dur": 2.2,
+    "dur": 0.35,
+    "pan_from": 0.8,
+    "pan_to": -0.8,
+    "seed": 47
+   },
+   "peak": true
+  },
+  {
+   "t": 12.6,
+   "fx": "felt",
+   "gain_db": -14,
+   "label": "panel lands 2",
+   "bus": "sfx",
+   "args": {
+    "freq": 110,
+    "seed": 51
+   }
+  },
+  {
+   "t": 12.9,
+   "fx": "sweep",
+   "gain_db": -12,
+   "label": "colour panel slam 3",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.35,
+    "pan_from": -0.8,
+    "pan_to": 0.8,
+    "seed": 48
+   },
+   "peak": true
+  },
+  {
+   "t": 12.9,
+   "fx": "felt",
+   "gain_db": -14,
+   "label": "panel lands 3",
+   "bus": "sfx",
+   "args": {
+    "freq": 123,
     "seed": 52
+   }
+  },
+  {
+   "t": 13.2,
+   "fx": "sweep",
+   "gain_db": -12,
+   "label": "colour panel slam 4",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.35,
+    "pan_from": 0.8,
+    "pan_to": -0.8,
+    "seed": 49
+   },
+   "peak": true
+  },
+  {
+   "t": 13.2,
+   "fx": "felt",
+   "gain_db": -14,
+   "label": "panel lands 4",
+   "bus": "sfx",
+   "args": {
+    "freq": 131,
+    "seed": 53
+   }
+  },
+  {
+   "t": 13.5,
+   "fx": "swell",
+   "gain_db": -14,
+   "label": "shape morphs",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.5,
+    "freq": 147
    },
    "align": "end"
   },
   {
-   "t": 27.5,
-   "fx": "swell",
-   "gain_db": -10,
-   "label": "into the lockup",
+   "t": 13.8,
+   "fx": "pencil",
+   "gain_db": -15,
+   "label": "bezier handle snaps the curve",
    "bus": "sfx",
    "args": {
-    "dur": 1.2,
+    "dur": 0.4,
+    "seed": 54
+   }
+  },
+  {
+   "t": 13.8,
+   "fx": "tick",
+   "gain_db": -21,
+   "label": "keyframe diamonds",
+   "bus": "sfx",
+   "args": {
+    "freq": 2900,
+    "seed": 55,
+    "pan": 0.4
+   }
+  },
+  {
+   "t": 14.4,
+   "fx": "sweep",
+   "gain_db": -9,
+   "label": "SECTION 02",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.6,
+    "pan_from": 0.9,
+    "pan_to": -0.9,
+    "seed": 60
+   },
+   "peak": true
+  },
+  {
+   "t": 14.4,
+   "fx": "shutter",
+   "gain_db": -13,
+   "label": "frame flash",
+   "bus": "sfx",
+   "args": {
+    "seed": 61
+   }
+  },
+  {
+   "t": 14.4,
+   "fx": "scrub",
+   "gain_db": -22,
+   "label": "label types on",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.3,
+    "rate0": 28,
+    "rate1": 32,
+    "seed": 62
+   }
+  },
+  {
+   "t": 15.0,
+   "fx": "snap",
+   "gain_db": -8,
+   "label": "clip 1 snaps on",
+   "bus": "sfx",
+   "args": {
+    "seed": 63,
+    "pan": -0.5
+   }
+  },
+  {
+   "t": 15.6,
+   "fx": "snap",
+   "gain_db": -8,
+   "label": "clip 2 snaps on",
+   "bus": "sfx",
+   "args": {
+    "seed": 64,
+    "pan": 0.0
+   }
+  },
+  {
+   "t": 16.2,
+   "fx": "snap",
+   "gain_db": -8,
+   "label": "clip 3 snaps on",
+   "bus": "sfx",
+   "args": {
+    "seed": 65,
+    "pan": 0.5
+   }
+  },
+  {
+   "t": 16.8,
+   "fx": "scrub",
+   "gain_db": -12,
+   "label": "playhead scrubs",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.6,
+    "seed": 66
+   }
+  },
+  {
+   "t": 17.4,
+   "fx": "shutter",
+   "gain_db": -10.0,
+   "label": "cut 1",
+   "bus": "sfx",
+   "args": {
+    "seed": 67,
+    "pan": -0.4
+   }
+  },
+  {
+   "t": 17.7,
+   "fx": "shutter",
+   "gain_db": -9.5,
+   "label": "cut 2",
+   "bus": "sfx",
+   "args": {
+    "seed": 68,
+    "pan": 0.4
+   }
+  },
+  {
+   "t": 18.0,
+   "fx": "shutter",
+   "gain_db": -9.0,
+   "label": "cut 3",
+   "bus": "sfx",
+   "args": {
+    "seed": 69,
+    "pan": -0.2
+   }
+  },
+  {
+   "t": 18.3,
+   "fx": "shutter",
+   "gain_db": -8.5,
+   "label": "cut 4",
+   "bus": "sfx",
+   "args": {
+    "seed": 70,
+    "pan": 0.2
+   }
+  },
+  {
+   "t": 18.6,
+   "fx": "shutter",
+   "gain_db": -8.0,
+   "label": "cut 5",
+   "bus": "sfx",
+   "args": {
+    "seed": 71,
+    "pan": 0
+   }
+  },
+  {
+   "t": 19.2,
+   "fx": "whoosh",
+   "gain_db": -8,
+   "label": "SECTION 03",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.6,
+    "seed": 80
+   },
+   "peak": true
+  },
+  {
+   "t": 19.2,
+   "fx": "scrub",
+   "gain_db": -22,
+   "label": "label types on",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.45,
+    "rate0": 28,
+    "rate1": 32,
+    "seed": 81
+   }
+  },
+  {
+   "t": 19.8,
+   "fx": "sweep",
+   "gain_db": -11,
+   "label": "panel wipe right-to-left",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.45,
+    "pan_from": 0.8,
+    "pan_to": -0.8,
+    "seed": 82
+   },
+   "peak": true
+  },
+  {
+   "t": 20.4,
+   "fx": "sweep",
+   "gain_db": -11,
+   "label": "panel wipe left-to-right",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.45,
+    "pan_from": -0.8,
+    "pan_to": 0.8,
+    "seed": 83
+   },
+   "peak": true
+  },
+  {
+   "t": 21.0,
+   "fx": "riser",
+   "gain_db": -14,
+   "label": "into the zoom-through",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.6,
+    "f0": 300,
+    "f1": 1600,
+    "seed": 84
+   },
+   "align": "end"
+  },
+  {
+   "t": 21.0,
+   "fx": "whoosh",
+   "gain_db": -8,
+   "label": "zoom-through",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.5,
+    "seed": 85,
+    "pan_from": 0,
+    "pan_to": 0
+   },
+   "peak": true
+  },
+  {
+   "t": 21.6,
+   "fx": "shimmer",
+   "gain_db": -19,
+   "label": "light leak over the grid",
+   "bus": "sfx",
+   "args": {
+    "dur": 2.2,
+    "base": 440
+   }
+  },
+  {
+   "t": 21.6,
+   "fx": "snap",
+   "gain_db": -7,
+   "label": "grid flips colour 1",
+   "bus": "sfx",
+   "args": {
+    "seed": 90,
+    "pan": -0.5
+   }
+  },
+  {
+   "t": 21.6,
+   "fx": "sweep",
+   "gain_db": -12,
+   "label": "grid slides 1",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.3,
+    "pan_from": -0.6,
+    "pan_to": 0.6,
+    "seed": 100
+   },
+   "peak": true
+  },
+  {
+   "t": 21.9,
+   "fx": "snap",
+   "gain_db": -10,
+   "label": "grid flips colour 2",
+   "bus": "sfx",
+   "args": {
+    "seed": 91,
+    "pan": 0.5
+   }
+  },
+  {
+   "t": 22.2,
+   "fx": "snap",
+   "gain_db": -7,
+   "label": "grid flips colour 3",
+   "bus": "sfx",
+   "args": {
+    "seed": 92,
+    "pan": -0.5
+   }
+  },
+  {
+   "t": 22.2,
+   "fx": "sweep",
+   "gain_db": -12,
+   "label": "grid slides 2",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.3,
+    "pan_from": -0.6,
+    "pan_to": 0.6,
+    "seed": 102
+   },
+   "peak": true
+  },
+  {
+   "t": 22.5,
+   "fx": "snap",
+   "gain_db": -10,
+   "label": "grid flips colour 4",
+   "bus": "sfx",
+   "args": {
+    "seed": 93,
+    "pan": 0.5
+   }
+  },
+  {
+   "t": 22.8,
+   "fx": "snap",
+   "gain_db": -7,
+   "label": "grid flips colour 5",
+   "bus": "sfx",
+   "args": {
+    "seed": 94,
+    "pan": -0.5
+   }
+  },
+  {
+   "t": 22.8,
+   "fx": "sweep",
+   "gain_db": -12,
+   "label": "grid slides 3",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.3,
+    "pan_from": -0.6,
+    "pan_to": 0.6,
+    "seed": 104
+   },
+   "peak": true
+  },
+  {
+   "t": 23.1,
+   "fx": "snap",
+   "gain_db": -10,
+   "label": "grid flips colour 6",
+   "bus": "sfx",
+   "args": {
+    "seed": 95,
+    "pan": 0.5
+   }
+  },
+  {
+   "t": 23.4,
+   "fx": "shutter",
+   "gain_db": -8,
+   "label": "burst 1",
+   "bus": "sfx",
+   "args": {
+    "seed": 110,
+    "pan": -0.5
+   }
+  },
+  {
+   "t": 23.6,
+   "fx": "shutter",
+   "gain_db": -7,
+   "label": "burst 2",
+   "bus": "sfx",
+   "args": {
+    "seed": 111,
+    "pan": 0.5
+   }
+  },
+  {
+   "t": 23.8,
+   "fx": "shutter",
+   "gain_db": -6,
+   "label": "burst 3",
+   "bus": "sfx",
+   "args": {
+    "seed": 112,
+    "pan": 0
+   }
+  },
+  {
+   "t": 24.0,
+   "fx": "knock",
+   "gain_db": -9,
+   "label": "package 15S locks in",
+   "bus": "sfx",
+   "args": {
+    "freq": 196,
+    "seed": 120,
+    "pan": -0.4
+   }
+  },
+  {
+   "t": 24.0,
+   "fx": "scrub",
+   "gain_db": -23,
+   "label": "timecode rolls to 15S",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.25,
+    "rate0": 30,
+    "rate1": 36,
+    "seed": 123
+   }
+  },
+  {
+   "t": 24.6,
+   "fx": "knock",
+   "gain_db": -8,
+   "label": "package 30S locks in",
+   "bus": "sfx",
+   "args": {
+    "freq": 233,
+    "seed": 121,
+    "pan": 0
+   }
+  },
+  {
+   "t": 24.6,
+   "fx": "scrub",
+   "gain_db": -23,
+   "label": "timecode rolls to 30S",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.25,
+    "rate0": 30,
+    "rate1": 36,
+    "seed": 124
+   }
+  },
+  {
+   "t": 25.2,
+   "fx": "knock",
+   "gain_db": -7,
+   "label": "package 60S locks in",
+   "bus": "sfx",
+   "args": {
+    "freq": 294,
+    "seed": 122,
+    "pan": 0.4
+   }
+  },
+  {
+   "t": 25.2,
+   "fx": "scrub",
+   "gain_db": -23,
+   "label": "timecode rolls to 60S",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.25,
+    "rate0": 30,
+    "rate1": 36,
+    "seed": 125
+   }
+  },
+  {
+   "t": 25.8,
+   "fx": "felt",
+   "gain_db": -13,
+   "label": "'PACKAGES' settles",
+   "bus": "sfx",
+   "args": {
+    "freq": 104,
+    "seed": 126
+   }
+  },
+  {
+   "t": 26.4,
+   "fx": "tapestop",
+   "gain_db": -11,
+   "label": "everything stops",
+   "bus": "sfx",
+   "args": {
+    "dur": 0.5
+   }
+  },
+  {
+   "t": 27.0,
+   "fx": "key",
+   "gain_db": -24,
+   "label": "types 'B'",
+   "bus": "sfx",
+   "args": {
+    "seed": 130
+   }
+  },
+  {
+   "t": 27.09,
+   "fx": "key",
+   "gain_db": -24,
+   "label": "types 'Y'",
+   "bus": "sfx",
+   "args": {
+    "seed": 131
+   }
+  },
+  {
+   "t": 27.27,
+   "fx": "key",
+   "gain_db": -24,
+   "label": "types 'E'",
+   "bus": "sfx",
+   "args": {
+    "seed": 133
+   }
+  },
+  {
+   "t": 27.36,
+   "fx": "key",
+   "gain_db": -24,
+   "label": "types 'V'",
+   "bus": "sfx",
+   "args": {
+    "seed": 134
+   }
+  },
+  {
+   "t": 27.45,
+   "fx": "key",
+   "gain_db": -24,
+   "label": "types 'A'",
+   "bus": "sfx",
+   "args": {
+    "seed": 135
+   }
+  },
+  {
+   "t": 27.54,
+   "fx": "key",
+   "gain_db": -24,
+   "label": "types 'N'",
+   "bus": "sfx",
+   "args": {
+    "seed": 136
+   }
+  },
+  {
+   "t": 28.8,
+   "fx": "riser",
+   "gain_db": -12,
+   "label": "into the finale",
+   "bus": "sfx",
+   "args": {
+    "dur": 1.6,
+    "seed": 140
+   },
+   "align": "end"
+  },
+  {
+   "t": 28.8,
+   "fx": "swell",
+   "gain_db": -10,
+   "label": "into the finale",
+   "bus": "sfx",
+   "args": {
+    "dur": 1.0,
     "freq": 73.42
    },
    "align": "end"
   },
   {
-   "t": 27.5,
+   "t": 28.8,
    "fx": "impact",
-   "gain_db": -7,
-   "label": "LOCKUP: full title + three columns",
+   "gain_db": -6,
+   "label": "LOCKUP: title + three columns",
    "bus": "sfx",
    "args": {
     "dur": 2.8
    }
   },
   {
-   "t": 27.5,
+   "t": 28.8,
    "fx": "subdrop",
-   "gain_db": -10,
+   "gain_db": -9,
    "label": "LOCKUP sub",
    "bus": "sfx"
   },
   {
-   "t": 27.5,
+   "t": 28.8,
    "fx": "knock",
-   "gain_db": -9,
-   "label": "LOCKUP title stamp",
+   "gain_db": -8,
+   "label": "title stamp",
    "bus": "sfx",
    "args": {
     "freq": 196,
-    "seed": 53
+    "seed": 141
    }
   },
   {
-   "t": 27.5,
+   "t": 28.8,
    "fx": "ripple",
    "gain_db": -14,
-   "label": "rings spread behind the play button",
+   "label": "rings behind the play button",
    "bus": "sfx",
    "args": {
     "base": 146.83
    }
   },
   {
-   "t": 28.75,
+   "t": 29.4,
+   "fx": "felt",
+   "gain_db": -14,
+   "label": "BY EVAN settles",
+   "bus": "sfx",
+   "args": {
+    "freq": 92,
+    "seed": 142,
+    "pan": -0.5
+   }
+  },
+  {
+   "t": 30.0,
+   "fx": "tick",
+   "gain_db": -21,
+   "label": "'15S . 30S . 60S' corner label 1",
+   "bus": "sfx",
+   "args": {
+    "freq": 2400,
+    "seed": 143,
+    "pan": 0.6
+   }
+  },
+  {
+   "t": 30.15,
+   "fx": "tick",
+   "gain_db": -21,
+   "label": "'15S . 30S . 60S' corner label 2",
+   "bus": "sfx",
+   "args": {
+    "freq": 2400,
+    "seed": 144,
+    "pan": 0.6
+   }
+  },
+  {
+   "t": 30.3,
+   "fx": "tick",
+   "gain_db": -21,
+   "label": "'15S . 30S . 60S' corner label 3",
+   "bus": "sfx",
+   "args": {
+    "freq": 2400,
+    "seed": 145,
+    "pan": 0.6
+   }
+  },
+  {
+   "t": 30.0,
    "fx": "shimmer",
-   "gain_db": -19,
+   "gain_db": -20,
    "label": "lockup glow",
    "bus": "sfx",
    "args": {
@@ -766,36 +1365,24 @@
    }
   },
   {
-   "t": 28.75,
-   "fx": "felt",
-   "gain_db": -15,
-   "label": "BY EVAN settles",
-   "bus": "sfx",
-   "args": {
-    "freq": 92,
-    "seed": 54,
-    "pan": -0.5
-   }
-  },
-  {
-   "t": 30.0,
+   "t": 31.2,
    "fx": "press",
    "gain_db": -14,
    "label": "play button breathes (CTA)",
    "bus": "sfx",
    "args": {
-    "seed": 55
+    "seed": 146
    }
   },
   {
-   "t": 30.0,
+   "t": 31.2,
    "fx": "ripple",
    "gain_db": -19,
    "label": "CTA ring",
    "bus": "sfx",
    "args": {
     "base": 196,
-    "seed": 56
+    "seed": 147
    }
   },
   {
@@ -805,107 +1392,394 @@
    "label": "warm drone bed",
    "bus": "bed",
    "args": {
-    "dur": 32.0
+    "dur": 34.8,
+    "dips": [
+     [
+      26.4,
+      28.5,
+      0.12
+     ]
+    ]
    }
   },
   {
-   "t": 5.0,
+   "t": 4.8,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 3 pulse",
+   "gain_db": -6,
+   "label": "bar 3 beat 1 pulse",
    "bus": "bed",
    "args": {
-    "seed": 63
+    "seed": 212
    }
   },
   {
-   "t": 7.5,
+   "t": 5.4,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 4 pulse",
+   "gain_db": -11,
+   "label": "bar 3 beat 2 pulse",
    "bus": "bed",
    "args": {
-    "seed": 64
+    "seed": 213
    }
   },
   {
-   "t": 10.0,
+   "t": 6.0,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 5 pulse",
+   "gain_db": -11,
+   "label": "bar 3 beat 3 pulse",
    "bus": "bed",
    "args": {
-    "seed": 65
+    "seed": 214
    }
   },
   {
-   "t": 12.5,
+   "t": 6.6,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 6 pulse",
+   "gain_db": -11,
+   "label": "bar 3 beat 4 pulse",
    "bus": "bed",
    "args": {
-    "seed": 66
+    "seed": 215
+   }
+  },
+  {
+   "t": 7.2,
+   "fx": "pulse",
+   "gain_db": -6,
+   "label": "bar 4 beat 1 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 216
+   }
+  },
+  {
+   "t": 7.8,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 4 beat 2 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 217
+   }
+  },
+  {
+   "t": 8.4,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 4 beat 3 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 218
+   }
+  },
+  {
+   "t": 9.0,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 4 beat 4 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 219
+   }
+  },
+  {
+   "t": 9.6,
+   "fx": "pulse",
+   "gain_db": -6,
+   "label": "bar 5 beat 1 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 220
+   }
+  },
+  {
+   "t": 10.2,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 5 beat 2 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 221
+   }
+  },
+  {
+   "t": 10.8,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 5 beat 3 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 222
+   }
+  },
+  {
+   "t": 11.4,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 5 beat 4 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 223
+   }
+  },
+  {
+   "t": 12.0,
+   "fx": "pulse",
+   "gain_db": -6,
+   "label": "bar 6 beat 1 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 224
+   }
+  },
+  {
+   "t": 12.6,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 6 beat 2 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 225
+   }
+  },
+  {
+   "t": 13.2,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 6 beat 3 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 226
+   }
+  },
+  {
+   "t": 13.8,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 6 beat 4 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 227
+   }
+  },
+  {
+   "t": 14.4,
+   "fx": "pulse",
+   "gain_db": -6,
+   "label": "bar 7 beat 1 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 228
    }
   },
   {
    "t": 15.0,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 7 pulse",
+   "gain_db": -11,
+   "label": "bar 7 beat 2 pulse",
    "bus": "bed",
    "args": {
-    "seed": 67
+    "seed": 229
    }
   },
   {
-   "t": 17.5,
+   "t": 15.6,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 8 pulse",
+   "gain_db": -11,
+   "label": "bar 7 beat 3 pulse",
    "bus": "bed",
    "args": {
-    "seed": 68
+    "seed": 230
    }
   },
   {
-   "t": 20.0,
+   "t": 16.2,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 9 pulse",
+   "gain_db": -11,
+   "label": "bar 7 beat 4 pulse",
    "bus": "bed",
    "args": {
-    "seed": 69
+    "seed": 231
    }
   },
   {
-   "t": 22.5,
+   "t": 16.8,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 10 pulse",
+   "gain_db": -6,
+   "label": "bar 8 beat 1 pulse",
    "bus": "bed",
    "args": {
-    "seed": 70
+    "seed": 232
    }
   },
   {
-   "t": 27.5,
+   "t": 17.4,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 12 pulse",
+   "gain_db": -11,
+   "label": "bar 8 beat 2 pulse",
    "bus": "bed",
    "args": {
-    "seed": 72
+    "seed": 233
    }
   },
   {
-   "t": 30.0,
+   "t": 18.0,
    "fx": "pulse",
-   "gain_db": -7,
-   "label": "bar 13 pulse",
+   "gain_db": -11,
+   "label": "bar 8 beat 3 pulse",
    "bus": "bed",
    "args": {
-    "seed": 73
+    "seed": 234
+   }
+  },
+  {
+   "t": 18.6,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 8 beat 4 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 235
+   }
+  },
+  {
+   "t": 19.2,
+   "fx": "pulse",
+   "gain_db": -6,
+   "label": "bar 9 beat 1 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 236
+   }
+  },
+  {
+   "t": 19.8,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 9 beat 2 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 237
+   }
+  },
+  {
+   "t": 20.4,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 9 beat 3 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 238
+   }
+  },
+  {
+   "t": 21.0,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 9 beat 4 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 239
+   }
+  },
+  {
+   "t": 21.6,
+   "fx": "pulse",
+   "gain_db": -6,
+   "label": "bar 10 beat 1 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 240
+   }
+  },
+  {
+   "t": 22.2,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 10 beat 2 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 241
+   }
+  },
+  {
+   "t": 22.8,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 10 beat 3 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 242
+   }
+  },
+  {
+   "t": 23.4,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 10 beat 4 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 243
+   }
+  },
+  {
+   "t": 24.0,
+   "fx": "pulse",
+   "gain_db": -6,
+   "label": "bar 11 beat 1 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 244
+   }
+  },
+  {
+   "t": 24.6,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 11 beat 2 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 245
+   }
+  },
+  {
+   "t": 25.2,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 11 beat 3 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 246
+   }
+  },
+  {
+   "t": 25.8,
+   "fx": "pulse",
+   "gain_db": -11,
+   "label": "bar 11 beat 4 pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 247
+   }
+  },
+  {
+   "t": 28.8,
+   "fx": "pulse",
+   "gain_db": -5,
+   "label": "finale pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 288
+   }
+  },
+  {
+   "t": 31.2,
+   "fx": "pulse",
+   "gain_db": -5,
+   "label": "finale pulse",
+   "bus": "bed",
+   "args": {
+    "seed": 291
    }
   }
  ]

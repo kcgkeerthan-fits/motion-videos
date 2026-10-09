@@ -1,80 +1,156 @@
 | time (s) | effect | gain dB | align | bus | sits under |
 |---:|---|---:|---|---|---|
 | 0.000 | bed | 0 | start | bed | warm drone bed |
-| 0.625 | spinup | -10 | end | sfx | tape spins up as the frame wakes |
-| 0.625 | tick | -20 | start | sfx | REC dot blinks on |
-| 1.250 | tick | -25 | start | sfx | timecode ticks |
-| 1.250 | pencil | -15 | start | sfx | dashed circle draws (top-left) |
-| 1.875 | tick | -25 | start | sfx | timecode ticks |
-| 1.875 | tick | -23 | start | sfx | crosshair marks appear |
-| 2.500 | pencil | -14 | start | sfx | bezier curve draws (bottom-right) |
-| 3.750 | felt | -15 | start | sfx | play button disc lands centre |
-| 4.375 | pencil | -17 | start | sfx | play triangle draws |
-| 5.000 | press | -6 | start | sfx | PLAY is pressed |
-| 5.000 | ripple | -12 | start | sfx | rings spread from the button |
-| 5.000 | pulse | -7 | start | bed | bar 3 pulse |
-| 5.625 | sweep | -10 | peak | sfx | terracotta column wipes open |
-| 6.250 | swell | -12 | end | sfx | into 'Motion' |
-| 6.250 | knock | -7 | start | sfx | 'Motion' stamps in |
-| 6.875 | knock | -6 | start | sfx | 'Graphics' stamps in |
-| 6.875 | impact | -11 | start | sfx | title weight |
-| 6.875 | subdrop | -13 | start | sfx | title weight (sub) |
-| 7.500 | sweep | -15 | peak | sfx | italic 'that bring ideas' glides in |
-| 7.500 | pulse | -7 | start | bed | bar 4 pulse |
-| 8.125 | paper | -19 | start | sfx | italic settles |
-| 8.750 | knock | -8 | start | sfx | 'to life' lands |
-| 8.750 | shimmer | -19 | start | sfx | warm glow on 'to life' |
-| 9.375 | felt | -14 | start | sfx | leaning ellipse 1 falls into place |
-| 9.531 | felt | -15 | start | sfx | leaning ellipse 2 falls into place |
-| 9.688 | felt | -16 | start | sfx | leaning ellipse 3 falls into place |
-| 10.000 | sweep | -9 | peak | sfx | SECTION 01 transition |
-| 10.000 | scrub | -22 | start | sfx | label types on: MOTION GRAPHICS & ANIMATION |
-| 10.000 | pulse | -7 | start | bed | bar 5 pulse |
-| 10.625 | felt | -10 | start | sfx | ellipse bounce 1 (squash) |
-| 11.250 | felt | -13 | start | sfx | ellipse bounce 2 (squash) |
-| 11.875 | felt | -16 | start | sfx | ellipse bounce 3 (squash) |
-| 12.500 | pencil | -15 | start | sfx | bezier handle dragged, curve redraws |
-| 12.500 | pulse | -7 | start | bed | bar 6 pulse |
-| 13.750 | swell | -13 | end | sfx | shape morphs |
-| 13.750 | felt | -10 | start | sfx | morph lands |
-| 14.375 | tick | -22 | start | sfx | keyframe diamonds blink |
-| 15.000 | sweep | -9 | peak | sfx | SECTION 02 transition |
-| 15.000 | shutter | -14 | start | sfx | frame flash |
-| 15.000 | scrub | -22 | start | sfx | label types on: VIDEO EDITING |
-| 15.000 | pulse | -7 | start | bed | bar 7 pulse |
-| 15.625 | snap | -12 | start | sfx | clip 1 snaps onto the timeline |
-| 16.250 | snap | -12 | start | sfx | clip 2 snaps onto the timeline |
-| 16.875 | snap | -12 | start | sfx | clip 3 snaps onto the timeline |
-| 17.500 | scrub | -15 | start | sfx | playhead scrubs the timeline |
-| 17.500 | pulse | -7 | start | bed | bar 8 pulse |
-| 18.750 | shutter | -14 | start | sfx | cut 1 (accelerating edit) |
-| 19.062 | shutter | -13 | start | sfx | cut 2 (accelerating edit) |
-| 19.375 | shutter | -12 | start | sfx | cut 3 (accelerating edit) |
-| 20.000 | whoosh | -8 | peak | sfx | SECTION 03 transition |
-| 20.000 | scrub | -22 | start | sfx | label types on: SMOOTH TRANSITIONS & VISUAL EFFECTS |
-| 20.000 | pulse | -7 | start | bed | bar 9 pulse |
-| 20.625 | sweep | -11 | peak | sfx | panel wipe right-to-left |
-| 21.250 | sweep | -11 | peak | sfx | panel wipe left-to-right |
-| 22.500 | riser | -13 | end | sfx | into the zoom-through |
-| 22.500 | whoosh | -8 | peak | sfx | zoom-through transition |
-| 22.500 | pulse | -7 | start | bed | bar 10 pulse |
-| 23.125 | shimmer | -17 | start | sfx | light leak washes across |
-| 23.750 | tapestop | -12 | start | sfx | VFX time-freeze |
-| 25.000 | spinup | -12 | end | sfx | time restarts |
-| 25.000 | scrub | -21 | start | sfx | timecode rolls to 00:00:15 |
-| 25.469 | knock | -10 | start | sfx | package 15S locks in |
-| 26.094 | knock | -9 | start | sfx | package 30S locks in |
-| 26.719 | knock | -8 | start | sfx | package 60S locks in |
-| 27.188 | felt | -15 | start | sfx | 'PACKAGES' label settles |
-| 27.500 | riser | -11 | end | sfx | into the lockup |
-| 27.500 | swell | -10 | end | sfx | into the lockup |
-| 27.500 | impact | -7 | start | sfx | LOCKUP: full title + three columns |
-| 27.500 | subdrop | -10 | start | sfx | LOCKUP sub |
-| 27.500 | knock | -9 | start | sfx | LOCKUP title stamp |
-| 27.500 | ripple | -14 | start | sfx | rings spread behind the play button |
-| 27.500 | pulse | -7 | start | bed | bar 12 pulse |
-| 28.750 | shimmer | -19 | start | sfx | lockup glow |
-| 28.750 | felt | -15 | start | sfx | BY EVAN settles |
-| 30.000 | press | -14 | start | sfx | play button breathes (CTA) |
-| 30.000 | ripple | -19 | start | sfx | CTA ring |
-| 30.000 | pulse | -7 | start | bed | bar 13 pulse |
+| 0.300 | spinup | -10 | end | sfx | tape spins up |
+| 0.300 | tick | -19 | start | sfx | REC dot on |
+| 0.600 | tick | -26 | start | sfx | timecode tick |
+| 0.600 | pencil | -15 | start | sfx | dashed circle draws |
+| 0.900 | tick | -26 | start | sfx | timecode tick |
+| 1.200 | tick | -26 | start | sfx | timecode tick |
+| 1.200 | tick | -21 | start | sfx | crosshairs snap on |
+| 1.500 | tick | -26 | start | sfx | timecode tick |
+| 1.800 | tick | -26 | start | sfx | timecode tick |
+| 1.800 | pencil | -15 | start | sfx | ruler ticks run down the edge |
+| 2.100 | tick | -26 | start | sfx | timecode tick |
+| 2.400 | tick | -26 | start | sfx | timecode tick |
+| 2.400 | sweep | -9 | peak | sfx | terracotta block SLAMS in |
+| 2.400 | felt | -10 | start | sfx | block lands |
+| 3.000 | sweep | -15 | peak | sfx | block shifts 1 |
+| 3.000 | pencil | -16 | start | sfx | bezier curve draws |
+| 3.600 | sweep | -15 | peak | sfx | block shifts 2 |
+| 3.600 | felt | -13 | start | sfx | play disc lands |
+| 4.200 | sweep | -15 | peak | sfx | block shifts 3 |
+| 4.200 | pencil | -18 | start | sfx | play triangle draws |
+| 4.800 | press | -6 | start | sfx | PLAY pressed |
+| 4.800 | ripple | -13 | start | sfx | rings spread |
+| 4.800 | pulse | -6 | start | bed | bar 3 beat 1 pulse |
+| 5.400 | knock | -8 | start | sfx | 'Motion' |
+| 5.400 | pulse | -11 | start | bed | bar 3 beat 2 pulse |
+| 6.000 | knock | -6 | start | sfx | 'Graphics' |
+| 6.000 | impact | -14 | start | sfx | title weight |
+| 6.000 | subdrop | -14 | start | sfx | title weight (sub) |
+| 6.000 | pulse | -11 | start | bed | bar 3 beat 3 pulse |
+| 6.600 | paper | -18 | start | sfx | italic 'that' |
+| 6.600 | pulse | -11 | start | bed | bar 3 beat 4 pulse |
+| 6.900 | paper | -18 | start | sfx | italic 'bring' |
+| 7.200 | sweep | -14 | peak | sfx | italic 'ideas' glides in |
+| 7.200 | pulse | -6 | start | bed | bar 4 beat 1 pulse |
+| 7.800 | felt | -15 | start | sfx | 'to' |
+| 7.800 | pulse | -11 | start | bed | bar 4 beat 2 pulse |
+| 8.400 | knock | -7 | start | sfx | 'life' lands |
+| 8.400 | shimmer | -20 | start | sfx | glow on 'life' |
+| 8.400 | pulse | -11 | start | bed | bar 4 beat 3 pulse |
+| 9.000 | whoosh | -10 | peak | sfx | title SCATTERS into letters |
+| 9.000 | pulse | -11 | start | bed | bar 4 beat 4 pulse |
+| 9.030 | tick | -20 | start | sfx | letter 1 flies |
+| 9.080 | tick | -21 | start | sfx | letter 2 flies |
+| 9.130 | tick | -22 | start | sfx | letter 3 flies |
+| 9.180 | tick | -20 | start | sfx | letter 4 flies |
+| 9.230 | tick | -21 | start | sfx | letter 5 flies |
+| 9.280 | tick | -22 | start | sfx | letter 6 flies |
+| 9.330 | tick | -20 | start | sfx | letter 7 flies |
+| 9.380 | tick | -21 | start | sfx | letter 8 flies |
+| 9.600 | sweep | -9 | peak | sfx | SECTION 01 |
+| 9.600 | scrub | -22 | start | sfx | label types on |
+| 9.600 | pulse | -6 | start | bed | bar 5 beat 1 pulse |
+| 10.200 | felt | -10 | start | sfx | ellipse bounce 1 |
+| 10.200 | pulse | -11 | start | bed | bar 5 beat 2 pulse |
+| 10.800 | felt | -12 | start | sfx | ellipse bounce 2 |
+| 10.800 | pulse | -11 | start | bed | bar 5 beat 3 pulse |
+| 11.400 | felt | -14 | start | sfx | ellipse bounce 3 |
+| 11.400 | pulse | -11 | start | bed | bar 5 beat 4 pulse |
+| 12.000 | sweep | -10 | peak | sfx | colour panel slam 1 |
+| 12.000 | felt | -14 | start | sfx | panel lands 1 |
+| 12.000 | pulse | -6 | start | bed | bar 6 beat 1 pulse |
+| 12.600 | sweep | -12 | peak | sfx | colour panel slam 2 |
+| 12.600 | felt | -14 | start | sfx | panel lands 2 |
+| 12.600 | pulse | -11 | start | bed | bar 6 beat 2 pulse |
+| 12.900 | sweep | -12 | peak | sfx | colour panel slam 3 |
+| 12.900 | felt | -14 | start | sfx | panel lands 3 |
+| 13.200 | sweep | -12 | peak | sfx | colour panel slam 4 |
+| 13.200 | felt | -14 | start | sfx | panel lands 4 |
+| 13.200 | pulse | -11 | start | bed | bar 6 beat 3 pulse |
+| 13.500 | swell | -14 | end | sfx | shape morphs |
+| 13.800 | pencil | -15 | start | sfx | bezier handle snaps the curve |
+| 13.800 | tick | -21 | start | sfx | keyframe diamonds |
+| 13.800 | pulse | -11 | start | bed | bar 6 beat 4 pulse |
+| 14.400 | sweep | -9 | peak | sfx | SECTION 02 |
+| 14.400 | shutter | -13 | start | sfx | frame flash |
+| 14.400 | scrub | -22 | start | sfx | label types on |
+| 14.400 | pulse | -6 | start | bed | bar 7 beat 1 pulse |
+| 15.000 | snap | -8 | start | sfx | clip 1 snaps on |
+| 15.000 | pulse | -11 | start | bed | bar 7 beat 2 pulse |
+| 15.600 | snap | -8 | start | sfx | clip 2 snaps on |
+| 15.600 | pulse | -11 | start | bed | bar 7 beat 3 pulse |
+| 16.200 | snap | -8 | start | sfx | clip 3 snaps on |
+| 16.200 | pulse | -11 | start | bed | bar 7 beat 4 pulse |
+| 16.800 | scrub | -12 | start | sfx | playhead scrubs |
+| 16.800 | pulse | -6 | start | bed | bar 8 beat 1 pulse |
+| 17.400 | shutter | -10.0 | start | sfx | cut 1 |
+| 17.400 | pulse | -11 | start | bed | bar 8 beat 2 pulse |
+| 17.700 | shutter | -9.5 | start | sfx | cut 2 |
+| 18.000 | shutter | -9.0 | start | sfx | cut 3 |
+| 18.000 | pulse | -11 | start | bed | bar 8 beat 3 pulse |
+| 18.300 | shutter | -8.5 | start | sfx | cut 4 |
+| 18.600 | shutter | -8.0 | start | sfx | cut 5 |
+| 18.600 | pulse | -11 | start | bed | bar 8 beat 4 pulse |
+| 19.200 | whoosh | -8 | peak | sfx | SECTION 03 |
+| 19.200 | scrub | -22 | start | sfx | label types on |
+| 19.200 | pulse | -6 | start | bed | bar 9 beat 1 pulse |
+| 19.800 | sweep | -11 | peak | sfx | panel wipe right-to-left |
+| 19.800 | pulse | -11 | start | bed | bar 9 beat 2 pulse |
+| 20.400 | sweep | -11 | peak | sfx | panel wipe left-to-right |
+| 20.400 | pulse | -11 | start | bed | bar 9 beat 3 pulse |
+| 21.000 | riser | -14 | end | sfx | into the zoom-through |
+| 21.000 | whoosh | -8 | peak | sfx | zoom-through |
+| 21.000 | pulse | -11 | start | bed | bar 9 beat 4 pulse |
+| 21.600 | shimmer | -19 | start | sfx | light leak over the grid |
+| 21.600 | snap | -7 | start | sfx | grid flips colour 1 |
+| 21.600 | sweep | -12 | peak | sfx | grid slides 1 |
+| 21.600 | pulse | -6 | start | bed | bar 10 beat 1 pulse |
+| 21.900 | snap | -10 | start | sfx | grid flips colour 2 |
+| 22.200 | snap | -7 | start | sfx | grid flips colour 3 |
+| 22.200 | sweep | -12 | peak | sfx | grid slides 2 |
+| 22.200 | pulse | -11 | start | bed | bar 10 beat 2 pulse |
+| 22.500 | snap | -10 | start | sfx | grid flips colour 4 |
+| 22.800 | snap | -7 | start | sfx | grid flips colour 5 |
+| 22.800 | sweep | -12 | peak | sfx | grid slides 3 |
+| 22.800 | pulse | -11 | start | bed | bar 10 beat 3 pulse |
+| 23.100 | snap | -10 | start | sfx | grid flips colour 6 |
+| 23.400 | shutter | -8 | start | sfx | burst 1 |
+| 23.400 | pulse | -11 | start | bed | bar 10 beat 4 pulse |
+| 23.600 | shutter | -7 | start | sfx | burst 2 |
+| 23.800 | shutter | -6 | start | sfx | burst 3 |
+| 24.000 | knock | -9 | start | sfx | package 15S locks in |
+| 24.000 | scrub | -23 | start | sfx | timecode rolls to 15S |
+| 24.000 | pulse | -6 | start | bed | bar 11 beat 1 pulse |
+| 24.600 | knock | -8 | start | sfx | package 30S locks in |
+| 24.600 | scrub | -23 | start | sfx | timecode rolls to 30S |
+| 24.600 | pulse | -11 | start | bed | bar 11 beat 2 pulse |
+| 25.200 | knock | -7 | start | sfx | package 60S locks in |
+| 25.200 | scrub | -23 | start | sfx | timecode rolls to 60S |
+| 25.200 | pulse | -11 | start | bed | bar 11 beat 3 pulse |
+| 25.800 | felt | -13 | start | sfx | 'PACKAGES' settles |
+| 25.800 | pulse | -11 | start | bed | bar 11 beat 4 pulse |
+| 26.400 | tapestop | -11 | start | sfx | everything stops |
+| 27.000 | key | -24 | start | sfx | types 'B' |
+| 27.090 | key | -24 | start | sfx | types 'Y' |
+| 27.270 | key | -24 | start | sfx | types 'E' |
+| 27.360 | key | -24 | start | sfx | types 'V' |
+| 27.450 | key | -24 | start | sfx | types 'A' |
+| 27.540 | key | -24 | start | sfx | types 'N' |
+| 28.800 | riser | -12 | end | sfx | into the finale |
+| 28.800 | swell | -10 | end | sfx | into the finale |
+| 28.800 | impact | -6 | start | sfx | LOCKUP: title + three columns |
+| 28.800 | subdrop | -9 | start | sfx | LOCKUP sub |
+| 28.800 | knock | -8 | start | sfx | title stamp |
+| 28.800 | ripple | -14 | start | sfx | rings behind the play button |
+| 28.800 | pulse | -5 | start | bed | finale pulse |
+| 29.400 | felt | -14 | start | sfx | BY EVAN settles |
+| 30.000 | tick | -21 | start | sfx | '15S . 30S . 60S' corner label 1 |
+| 30.000 | shimmer | -20 | start | sfx | lockup glow |
+| 30.150 | tick | -21 | start | sfx | '15S . 30S . 60S' corner label 2 |
+| 30.300 | tick | -21 | start | sfx | '15S . 30S . 60S' corner label 3 |
+| 31.200 | press | -14 | start | sfx | play button breathes (CTA) |
+| 31.200 | ripple | -19 | start | sfx | CTA ring |
+| 31.200 | pulse | -5 | start | bed | finale pulse |

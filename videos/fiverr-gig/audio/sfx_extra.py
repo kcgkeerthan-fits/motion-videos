@@ -105,7 +105,7 @@ def sweep(seed=47, dur=0.9, pan_from=-0.9, pan_to=0.9):
     return L.whoosh(dur=dur, f_lo=140, f_hi=1800, pan_from=pan_from, pan_to=pan_to, seed=seed)
 
 
-def bed(seed=48, dur=32.0, root=73.42):
+def bed(seed=48, dur=32.0, root=73.42, dips=()):
     """Low warm drone bed (D2 + A2 + F3 colour), slow breathing. Glue for a no-music cut; mute it under music."""
     r = L.rng(seed)
     t = L.t_axis(dur)
@@ -113,10 +113,13 @@ def bed(seed=48, dur=32.0, root=73.42):
     for m, g in ((1, 1.0), (1.5, 0.55), (2, 0.35), (2.378, 0.18), (3, 0.12)):
         det = r.uniform(-0.25, 0.25)
         out += g * (np.sin(2 * np.pi * (root * m + det) * t) + np.sin(2 * np.pi * (root * m - det) * t + 1.3))
-    breath = 0.8 + 0.2 * np.sin(2 * np.pi * t / 5.0)  # one breath per 2 bars at 96 bpm
+    breath = 0.8 + 0.2 * np.sin(2 * np.pi * t / 4.8)  # one breath per 2 bars at 100 bpm
     air = L.fft_filter(r.standard_normal(len(t)), lo=500, hi=3000) * 0.04
     mono = L.fft_filter(out, hi=900) * breath + air
     env = np.minimum(1, t / 2.0) * np.minimum(1, (dur - t) / 3.0)
+    for t0, t1, g in dips:  # duck the bed for a breath: [start, end, gain]
+        k = np.interp(t, [t0 - 0.15, t0, t1, t1 + 0.4], [1, g, g, 1])
+        env = env * k
     st = np.stack([mono, np.roll(mono, 911)], axis=1) * env[:, None]
     return L.norm(st, 0.6)
 
